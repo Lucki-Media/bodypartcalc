@@ -1,0 +1,14 @@
+.img_group{
+    display:flex;
+    justify-content: space-between;
+}
+.side_img_block, .top_img_block{
+    background-color: #F6F6F6;
+    border-radius: 38px;
+}
+@media only screen and (max-width:479px) {
+    .img_group{
+        display:block;
+    }
+
+}

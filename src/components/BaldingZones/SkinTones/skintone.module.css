@@ -1,0 +1,41 @@
+.skin_tones_section{
+    display: flex;
+    .heading{
+        color: #1C1C1C;
+        font-size: 26px;
+        line-height: 29px;
+        font-family: 'quiche_sansmedium';
+        font-weight: normal;
+        margin: 0;
+    }
+    .title_group{
+        display: flex;
+        justify-content: center;
+        padding-top: 16px;
+        input[type="radio"] {
+            color: #000000;
+            width: 18px;
+            height: 18px;
+        }
+    }
+    .title{
+        font-size: 16px;
+        font-weight: normal;
+        margin: 0;
+        font-family: 'poppinsmedium';
+        line-height: 25px;
+        text-align: center;
+        padding-left: 10px;
+    }
+    .skin_tones_block{
+        display: flex;
+        flex-wrap: wrap;
+    }
+    .tone_inner{
+        background-color: #F6F6F6;
+        border-radius: 20px;
+        padding: 16px 19px;
+        margin: 28px 18px 0 0;
+    }
+
+}
