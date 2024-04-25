@@ -2,7 +2,8 @@ import React from 'react';
 import MainDesc from '../MainContent/MainDesc';
 import styles from './horizontalTab.module.css';
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
-import ImageMap from '../BaldingZones/ImageMap/ImageMap';
+import HairMapping from '../BaldingZones/HairMapping/HairMapping';
+import BodyZones from '../BodyZones/BodyZones';
 
 
 const HorizontalTab = () => {
@@ -22,12 +23,12 @@ const HorizontalTab = () => {
                             </TabList>
 
                             <TabPanel className={styles.tab_one}>
-                                <div>
-                                    <ImageMap/>
-                                </div>
+                                {/* <div>
+                                    <HairMapping/>
+                                </div> */}
                             </TabPanel>
                             <TabPanel className={styles.tab_two}>
-                                <h3>Any content 2</h3>
+                                <BodyZones />
                             </TabPanel>
                         </Tabs>
                     </div>

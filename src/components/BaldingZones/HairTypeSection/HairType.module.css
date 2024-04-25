@@ -1,17 +1,13 @@
-.skin_tones_section {
+.hair_type_section {
   display: flex;
   padding: 110px 0;
 }
-
 .left_zone {
-  width: 40%;
+  width: 50%;
 }
-
 .right_zone {
-  width: 60%;
-  margin-left: 20px;
+  width: 50%;
 }
-
 .heading {
   color: #1c1c1c;
   font-size: 26px;
@@ -19,20 +15,35 @@
   font-family: "quiche_sansmedium";
   font-weight: normal;
   margin: 0;
+  margin-left: 30px;
 }
-
-.title_group {
+.hair_type_block {
   display: flex;
-  justify-content: center;
-  padding-top: 16px;
+  flex-wrap: wrap;
 }
-
+.hair_type_inner {
+  width: 50%;
+}
+.hairBlock {
+  margin: 23px 0 0 28px;
+  background-color: #f6f6f6;
+  border-radius: 20px;
+  padding: 17px 44px;
+}
 .title_group input[type="radio"] {
   accent-color: #000;
   width: 18px;
   height: 18px;
+  cursor: pointer;
 }
-
+.title_group {
+  display: flex;
+  justify-content: center;
+  margin-top: 5px;
+}
+.tone_img {
+  width: 100%;
+}
 .title {
   font-size: 16px;
   font-weight: normal;
@@ -43,27 +54,8 @@
   padding-left: 10px;
 }
 
-.skin_tones_block {
-  display: flex;
-  flex-wrap: wrap;
-}
-
-.tone_inner {
-  width: 33%;
-}
-.SkinBlock {
-  background-color: #f6f6f6;
-  border-radius: 20px;
-  padding: 16px 19px;
-  margin: 28px 18px 0 0;
-}
-@media only screen and (max-width: 479px) {
-    .tone_inner {
-        width: 70%;
-    }
-}
 @media only screen and (max-width: 769px) {
-  .skin_tones_section {
+  .hair_type_section {
     flex-direction: column;
     padding: 50px 0;
   }
@@ -74,18 +66,18 @@
     width: 100%;
     margin-left: 0px;
   }
-  .skin_tones_block {
+  .hair_type_inner {
+    margin: 9px;
+  }
+  .hair_type_block {
     justify-content: center;
   }
   .heading {
     text-align: center;
   }
-  .tone_inner {
-    width: 37%;
 }
-}
-@media only screen and (max-width:1150px) {
-    .tone_inner {
-        width: 50%;
-    }
+@media only screen and (max-width:479px) {
+    .hair_type_inner {
+       width: 100%;
+      }
 }

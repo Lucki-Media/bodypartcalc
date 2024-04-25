@@ -19,10 +19,25 @@
 .pattern_img{
     width: 100%;
 }
+@media only screen and (max-width:1150px) {
+    .count_no{
+        font-size:145px;
+    }
+    .show_counter_text{
+    font-size: 13px;
+    left: 58.6%;
+    }
+}
 @media only screen and (max-width:769px) {
+    .count_no{
+        font-size:200px;
+    }
     .counter_with_pattern{
         justify-content: center;
     }
+    .show_counter_text{
+        font-size: 18px;
+        }
 }
 @media only screen and (max-width:469px) {
     .count_no{

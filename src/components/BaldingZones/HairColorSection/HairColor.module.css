@@ -1,0 +1,54 @@
+
+.hair_color_section {
+    display: flex;
+    align-items: baseline;
+    padding: 110px 0;
+  }
+  .left_zone {
+    width: 50%;
+  }
+  .right_zone {
+    width: 50%;
+  }
+  .heading {
+    color: #1c1c1c;
+    font-size: 26px;
+    line-height: 29px;
+    font-family: "quiche_sansmedium";
+    font-weight: normal;
+    margin: 0;
+    margin-left: 9px;
+}
+.hair_color_block{
+    background-color: #F6F6F6;
+    padding: 34px 45px;
+    border-radius: 20px;
+    margin-top: 38px;
+}
+.sub_heading{
+    font-size: 16px;
+    color: #1C1C1C;
+    font-family: 'poppinsmedium';
+    font-style: normal;
+    margin-top: 0;
+}
+
+@media only screen and (max-width: 769px) {
+    .hair_color_section {
+      flex-direction: column;
+      padding: 50px 0;
+    }
+    .left_zone {
+      width: 100%;
+    }
+    .right_zone {
+      width: 100%;
+      margin-left: 0px;
+    }
+    .heading {
+        text-align: center;
+    }
+  }
+  @media only screen and (max-width: 479px) {
+
+  }

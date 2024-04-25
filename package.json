@@ -6,12 +6,17 @@
     "@testing-library/jest-dom": "^5.17.0",
     "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^13.5.0",
+    "jquery": "^3.7.1",
     "react": "^18.2.0",
     "react-countup": "^6.5.3",
     "react-dom": "^18.2.0",
+    "react-img-mapper": "^1.5.1",
     "react-radio-buttons": "^1.2.2",
     "react-scripts": "5.0.1",
+    "react-select2-wrapper": "^1.0.4-beta6",
     "react-tabs": "^6.0.2",
+    "select2-react-component": "^6.1.1",
+    "simple-react-form": "^4.0.6",
     "web-vitals": "^2.1.4"
   },
   "scripts": {

@@ -1,0 +1,80 @@
+.selectBody_section {
+  background-color: #f6f6f6;
+  border-radius: 38px;
+  width: 750px;
+  height: 850px;
+  margin-top: 30px;
+}
+.Body_section {
+  display: flex;
+  /* justify-content: center; */
+}
+.female_bodysection,
+.bodyImg_section,
+.male_bodysection {
+  width: 33%;
+}
+.bodyZoneimg {
+  position: relative;
+  z-index: 2;
+}
+.bodyPart {
+  cursor: pointer;
+  border-bottom: 3px solid #d5d1d1;
+  width: 345px;
+  height: 140px;
+  text-align: center;
+  align-items: center;
+  display: flex;
+  justify-content: center;
+}
+
+.male_bodysection .bodyPart {
+  position: relative;
+  z-index: 1;
+  right: 90px;
+}
+.bodyPart:first-child {
+  height: 195px;
+}
+.bodyPart:nth-last-child(2) {
+  height: 184px;
+}
+.bodyPart:nth-last-child(3) {
+  height: 209px;
+}
+.bodyPart:last-child {
+  border-bottom: transparent;
+}
+
+.body_part_link {
+  text-decoration: none;
+}
+.body_part_link .heading {
+  font-family: "quiche_sansmedium";
+  font-weight: normal;
+  font-style: normal;
+  font-size: 23px;
+  color: #1c1c1c;
+  margin: 0;
+}
+.sub_heading {
+  font-family: "quiche_sansmedium";
+  font-weight: normal;
+  font-style: normal;
+  font-size: 13px;
+  color: #707070;
+  margin: 10px 0;
+  opacity: 0;
+}
+.bodyPart:hover .sub_heading {
+  opacity: 1;
+}
+.female_bodysection .heading,
+.female_bodysection .sub_heading {
+  margin-right: 80px;
+}
+.male_bodysection .heading,
+.male_bodysection .sub_heading {
+  margin-left: 80px;
+}
