@@ -1,4 +1,5 @@
 import React from "react";
+import { useNavigate } from 'react-router-dom';
 import styles from "./HairColor.module.css";
 import Main_desc from "../../MainContent/MainDesc";
 import Select2 from "react-select2-wrapper";
@@ -17,6 +18,14 @@ const options = {
   ],
 };
 const HairColor = () => {
+  const navigate = useNavigate();
+
+  const handleNext = () => {
+    navigate("/htContactForm");
+  };
+  const handlePrev = () => {
+    navigate("/hairTypeSection");
+  };
   return (
     <>
       <div className="global_container">
@@ -35,6 +44,14 @@ const HairColor = () => {
                 />
               </div>
             </div>
+          </div>
+        </div>
+        <div className="bb_btn_block">
+          <div className="bb_redirect_prev_btn">
+          <button className="bb_button" onClick={handlePrev}>Prev</button>
+          </div>
+          <div className="bb_redirect_next_btn">
+            <button className="bb_button" onClick={handleNext}>Next</button>
           </div>
         </div>
       </div>

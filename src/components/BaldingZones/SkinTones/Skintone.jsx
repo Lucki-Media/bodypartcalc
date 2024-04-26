@@ -1,5 +1,5 @@
 import React from "react";
-import { RadioGroup, RadioButton } from "react-radio-buttons";
+import { useNavigate } from 'react-router-dom';
 import styles from "./skintone.module.css";
 import Main_desc from "../../MainContent/MainDesc";
 import pearl_white from "../../../image/pearl_white.png";
@@ -10,9 +10,19 @@ import dark_brown from "../../../image/dark_brown.png";
 import dark from "../../../image/dark.png";
 
 const Skintone = () => {
+  const navigate = useNavigate();
+
+  const handleNext = () => {
+    navigate("/hairTypeSection");
+  };
+
+  const handlePrev = () => {
+    navigate("/horizontalTab");
+  };
+
   return (
     <>
-      <div class="global_container">
+      <div className="global_container">
         <div className={styles.skin_tones_section}>
           <div className={styles.left_zone}>
             <Main_desc />
@@ -117,6 +127,14 @@ const Skintone = () => {
                 </div>
               </div>
             </div>
+          </div>
+        </div>
+        <div className="bb_btn_block">
+          <div className="bb_redirect_prev_btn">
+          <button className="bb_button" onClick={handlePrev}>Prev</button>
+          </div>
+          <div className="bb_redirect_next_btn">
+            <button className="bb_button" onClick={handleNext}>Next</button>
           </div>
         </div>
       </div>

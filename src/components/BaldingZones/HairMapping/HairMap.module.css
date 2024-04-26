@@ -1,14 +1,121 @@
-.img_group{
-    display:flex;
+.img_group {
+    display: flex;
     justify-content: space-between;
 }
-.side_img_block, .top_img_block{
+
+.side_img_block,
+.top_img_block {
     background-color: #F6F6F6;
     border-radius: 38px;
 }
+
 @media only screen and (max-width:479px) {
-    .img_group{
-        display:block;
+    .img_group {
+        display: block;
     }
 
+}
+
+.horizontal_tab_row {
+    display: flex;
+    justify-content: space-between;
+}
+
+.image_left {
+    width: 46%;
+    background-color: #F6F6F6;
+    margin: 15px;
+    padding: 15px;
+    border-radius: 38px;
+}
+
+.image_right {
+    width: 46%;
+    background-color: #F6F6F6;
+    margin: 15px;
+    padding: 15px;
+    border-radius: 38px;
+}
+
+
+.rendered_clickpopup {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+}
+
+.hair_type_popup {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    left: 0;
+    right: 0;
+    top: 50%;
+    transform: translate(0px, -50%);
+    background: #ffffff75;
+    z-index: 9;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.radio_popup {
+    align-items: flex-start;
+    background:#fff;
+    border-radius: 10px;
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 0px 5px 2px;
+    /* position: absolute;
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%, 0px); */
+    padding: 25px;
+    z-index: 9;
+    width: 350px;
+    white-space: nowrap;
+}
+.radio_popup p{
+    font-size: 20px;
+    font-weight: 600;
+    margin-top: 0px;
+    margin-bottom: 0;
+    line-height: 25px;
+    text-align: left;
+    font-family: 'poppinsmedium';
+    font-style: normal;
+}
+.radio_popup p:last-child{
+    margin-bottom: 15px;
+}
+.radio_popup form{
+    margin-top: 15px;
+}
+.radio_popup .input_style_fiels{
+    display: block;
+    padding: 10px 0;
+    font-size: 16px;
+    font-weight: 600;
+    font-family: 'poppinsmedium';
+    font-style: normal;
+    cursor: pointer;
+}
+
+.radio_popup .input_style_fiels input{
+    accent-color: #000;
+    cursor: pointer;
+
+}
+.hairMapping_Select_btn{
+    margin-top: 15px;
+    text-align: center
+}
+
+.submit_button{
+    padding: 10px 15px;
+    border: 1px solid transparent;
+    background: #000;
+    color: #fff;
+    border-radius: 3px;
+    font-family: 'poppinsmedium';
+    cursor: pointer;
 }

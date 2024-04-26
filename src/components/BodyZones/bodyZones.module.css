@@ -1,13 +1,12 @@
 .selectBody_section {
   background-color: #f6f6f6;
   border-radius: 38px;
-  width: 750px;
-  height: 850px;
+  width: calc(750px - 50px);
+  height: 770px;
   margin-top: 30px;
 }
 .Body_section {
   display: flex;
-  /* justify-content: center; */
 }
 .female_bodysection,
 .bodyImg_section,
@@ -17,11 +16,12 @@
 .bodyZoneimg {
   position: relative;
   z-index: 2;
+  width: 100%;
 }
 .bodyPart {
   cursor: pointer;
   border-bottom: 3px solid #d5d1d1;
-  width: 345px;
+  width: calc(354px - 0px);
   height: 140px;
   text-align: center;
   align-items: center;
@@ -32,7 +32,7 @@
 .male_bodysection .bodyPart {
   position: relative;
   z-index: 1;
-  right: 90px;
+  right:116px;
 }
 .bodyPart:first-child {
   height: 195px;
@@ -77,4 +77,24 @@
 .male_bodysection .heading,
 .male_bodysection .sub_heading {
   margin-left: 80px;
+}
+
+@media only screen and (max-width:1250px) {
+
+
+}
+@media only screen and (max-width:991px) {
+
+  .selectBody_section {
+    width:700px;
+    height: auto;
+  }
+  .male_bodysection .bodyPart {
+    right: 116px;
+  }
+}
+@media only screen and (max-width:469px) {
+  .selectBody_section {
+    width:550px;
+  }
 }

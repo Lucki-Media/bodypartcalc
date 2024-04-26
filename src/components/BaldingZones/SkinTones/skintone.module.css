@@ -4,11 +4,11 @@
 }
 
 .left_zone {
-  width: 40%;
+  width: 50%;
 }
 
 .right_zone {
-  width: 60%;
+  width: 50%;
   margin-left: 20px;
 }
 
@@ -51,17 +51,21 @@
 .tone_inner {
   width: 33%;
 }
+.tone_img {
+  width: 100%;
+}
 .SkinBlock {
   background-color: #f6f6f6;
   border-radius: 20px;
   padding: 16px 19px;
   margin: 28px 18px 0 0;
 }
-@media only screen and (max-width: 479px) {
-    .tone_inner {
-        width: 70%;
-    }
+@media only screen and (max-width: 1150px) {
+  .tone_inner {
+    width: 50%;
+  }
 }
+
 @media only screen and (max-width: 769px) {
   .skin_tones_section {
     flex-direction: column;
@@ -80,12 +84,12 @@
   .heading {
     text-align: center;
   }
+  .SkinBlock {
+    margin-right: 0;
+  }
+}
+@media only screen and (max-width: 520px) {
   .tone_inner {
-    width: 37%;
-}
-}
-@media only screen and (max-width:1150px) {
-    .tone_inner {
-        width: 50%;
-    }
+    width: 100%;
+  }
 }

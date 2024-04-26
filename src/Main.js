@@ -1,26 +1,37 @@
 import React from 'react';
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 // import MainDesc from './components/MainContent/MainDesc';
 // import Counter from './components/CounterNo/Counter';
-import HorizontalTab from './components/TabBlock/HorizontalTab';
-// import Skintone from './components/BaldingZones/SkinTones/Skintone';
-// import HairTypeSection from './components/BaldingZones/HairTypeSection/HairTypeSection';
 // import BodyZones from './components/BodyZones/BodyZones';
-// import HairColor from './components/BaldingZones/HairColorSection/HairColor';
-// import HtContactForm from './components/HtContactForm/HtContactForm';
+import HorizontalTab from './components/TabBlock/HorizontalTab';
+import Skintone from './components/BaldingZones/SkinTones/Skintone';
+import HairTypeSection from './components/BaldingZones/HairTypeSection/HairTypeSection';
+import HairColor from './components/BaldingZones/HairColorSection/HairColor';
+import HtContactForm from './components/HtContactForm/HtContactForm';
 
 
 
 function Main() {
   return (
     <>
+    {/* <HorizontalTab/> */}
     {/* <MainDesc/> */}
     {/* <Counter/> */}
-    <HorizontalTab/>
     {/* <Skintone/> */}
     {/* <HairTypeSection/> */}
     {/* <BodyZones/> */}
     {/* <HairColor/> */}
     {/* <HtContactForm/> */}
+    <Router>
+    <Routes>
+          <Route path="/" element={<HorizontalTab />} />
+          <Route path="/horizontalTab" element={<HorizontalTab />} />
+          <Route path="/skintone" element={<Skintone/>} />
+          <Route path="/hairTypeSection" element={<HairTypeSection/>} />
+          <Route path="/hairColor" element={<HairColor/>} />
+          <Route path="/htContactForm" element={<HtContactForm/>} />
+        </Routes>
+      </Router>
     </>
   )
 }

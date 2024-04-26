@@ -1,4 +1,5 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom'; 
 import MainDesc from '../MainContent/MainDesc';
 import styles from './horizontalTab.module.css';
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
@@ -7,6 +8,10 @@ import BodyZones from '../BodyZones/BodyZones';
 
 
 const HorizontalTab = () => {
+    const navigate = useNavigate();
+    const handleNext = () => {
+        navigate("/skintone"); 
+    };
     return (
         <>
             <div class="global_container">
@@ -23,15 +28,18 @@ const HorizontalTab = () => {
                             </TabList>
 
                             <TabPanel className={styles.tab_one}>
-                                {/* <div>
-                                    <HairMapping/>
-                                </div> */}
+                                <div className={styles.hairMapping}>
+                                    <HairMapping />
+                                    </div>
                             </TabPanel>
                             <TabPanel className={styles.tab_two}>
                                 <BodyZones />
                             </TabPanel>
                         </Tabs>
                     </div>
+                </div>
+                <div className="bb_redirect_next_btn">
+                    <button className="bb_button" onClick={handleNext}>Next</button>
                 </div>
             </div>
         </>
