@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 // import MainDesc from './components/MainContent/MainDesc';
 // import Counter from './components/CounterNo/Counter';
@@ -8,8 +8,6 @@ import Skintone from './components/BaldingZones/SkinTones/Skintone';
 import HairTypeSection from './components/BaldingZones/HairTypeSection/HairTypeSection';
 import HairColor from './components/BaldingZones/HairColorSection/HairColor';
 import HtContactForm from './components/HtContactForm/HtContactForm';
-
-
 
 function Main() {
   return (

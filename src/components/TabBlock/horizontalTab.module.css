@@ -3,10 +3,17 @@
     list-style: none;
     padding: 0;
 }
+
 .zones_block{
     display: flex;
-    justify-content: space-between;
+    /* justify-content: space-between; */
     padding: 129px 0;
+}
+.left_zone{
+    width: 50%;
+}
+.right_zone{
+    width: 50%;
 }
 .zone_title{
     font-size: 26px;
@@ -26,6 +33,7 @@
     rotate: 17deg;
     margin: -17px 30px;
 }
+
 .hairMapping{
     position: relative;
 }
@@ -33,6 +41,12 @@
     .zones_block{
         display: block;
         padding: 70px 0;
+    }
+    .left_zone{
+        width:100%;
+    }
+    .right_zone{
+        width:100%;
     }
 
 }
