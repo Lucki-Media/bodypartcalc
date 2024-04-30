@@ -13,9 +13,8 @@ const HairColor = () => {
   const [skinTypecookies, setskinTypeCookie] = useCookies(['skinType']);
   const [hairColorMoreOption, setHairColorMoreOption] = useState([]);
   const [loading, setLoading] = useState(true);
-  const [hColor, sethColor] = useState([]);
   const [dynamicValue, setDynamicValue] = useState({}); // New state for dynamic value
-  
+
   useEffect(() => {
     fetch(`${process.env.REACT_APP_URL}/build-my-hair/wp-json/bmh-hair-calculator/v1/data`)
       .then((response) => response.json())
@@ -29,21 +28,54 @@ const HairColor = () => {
       });
   }, []);
 
-  const handleOnChange = (item, selectedValue) => {
-    if(item.heading === 'Hair Color'){
-      setCookie("hairColor", selectedValue, {
-        path: "/",
-        maxAge: 604800,
-      });
-    }
-
-    if(item.heading === 'Skin Type'){ 
-      setskinTypeCookie("skinType", selectedValue, {
-      path: "/",
-      maxAge: 604800,
+  useEffect(() => {
+    // Set default options in cookies when component mounts
+    hairColorMoreOption.forEach((item) => {
+      const defaultOption = JSON.parse(item.nested_repeater)[0];
+      if (item.heading === 'Hair Color' && !cookies.hairColor) {
+        setCookie("hairColor", defaultOption, {
+          path: "/",
+          maxAge: 604800,
+        });
+      }
+      if (item.heading === 'Skin Type' && !skinTypecookies.skinType) {
+        setskinTypeCookie("skinType", defaultOption, {
+          path: "/",
+          maxAge: 604800,
+        });
+      }
     });
-  }
-   
+  }, [hairColorMoreOption, cookies.hairColor, setCookie, skinTypecookies.skinType, setskinTypeCookie]);
+
+  const handleOnChange = (item, selectedValue) => {
+    if (selectedValue) {
+      if (item.heading === 'Hair Color') {
+        setCookie("hairColor", selectedValue, {
+          path: "/",
+          maxAge: 604800,
+        });
+      }
+      if (item.heading === 'Skin Type') {
+        setskinTypeCookie("skinType", selectedValue, {
+          path: "/",
+          maxAge: 604800,
+        });
+      }
+    } else {
+      const defaultOption = JSON.parse(item.nested_repeater)[0];
+      if (item.heading === 'Hair Color') {
+        setCookie("hairColor", defaultOption, {
+          path: "/",
+          maxAge: 604800,
+        });
+      }
+      if (item.heading === 'Skin Type') {
+        setskinTypeCookie("skinType", defaultOption, {
+          path: "/",
+          maxAge: 604800,
+        });
+      }
+    }
   };
 
   return (
@@ -63,7 +95,7 @@ const HairColor = () => {
                   <div className={styles.hair_color_block} key={index}>
                     <h4 className={styles.sub_heading}>{item.heading}</h4>
                     <div className={`hair_color_selector ${styles.hair_color_selector}`}>
-                      <Select2
+                      <Select2 defaultValue={{ label: "Select Dept", value: 0 }}
                         data={JSON.parse(item.nested_repeater)}
                         value={dynamicValue[item.heading] || JSON.parse(item.nested_repeater)[0]}
                         onChange={(e) => {
@@ -96,3 +128,4 @@ const HairColor = () => {
 };
 
 export default HairColor;
+

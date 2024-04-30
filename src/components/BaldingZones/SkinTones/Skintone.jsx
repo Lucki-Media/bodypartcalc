@@ -10,14 +10,6 @@ const Skintone = () => {
   const [skinToneData, setSkinToneData] = useState(null);
   const [loading, setLoading] = useState(true); // Add loading state
 
-  const handleNext = () => {
-    navigate("/hairTypeSection");
-  };
-
-  const handlePrev = () => {
-    navigate("/horizontalTab");
-  };
-
   useEffect(() => {
     // Fetch data from the API endpoint
     fetch(`${process.env.REACT_APP_URL}` + "/build-my-hair/wp-json/bmh-hair-calculator/v1/data")
@@ -33,11 +25,26 @@ const Skintone = () => {
       });
   }, []);
 
+  useEffect(() => {
+    // Set default selected skin tone value in the cookies when component mounts
+    if (skinToneData && skinToneData.length > 0 && !cookies.skinTone) {
+      const defaultSkinTone = skinToneData[0].text_f;
+      setCookie('skinTone', defaultSkinTone, { path: '/' }); // Set the skinTone cookie
+    }
+  }, [skinToneData, cookies.skinTone, setCookie]);
+
   // Function to handle radio button change
   const handleSkinToneChange = (event) => {
     const selectedSkinTone = event.target.value;
-    const sanitizedSkinTone = selectedSkinTone.replace(/\s+/g, "-"); // Replace spaces with underscores
-    setCookie('skinTone', sanitizedSkinTone, { path: '/' }); // Set the skinTone cookie
+    setCookie('skinTone', selectedSkinTone, { path: '/' }); // Set the skinTone cookie
+  };
+
+  const handleNext = () => {
+    navigate("/hairTypeSection");
+  };
+
+  const handlePrev = () => {
+    navigate("/horizontalTab");
   };
 
   return (
