@@ -101,11 +101,19 @@
   }
 
   .male_bodysection .bodyPart {
-    right: 150px;
+    right: 110px;
+  }
+  .selectBody_section{
+    overflow: hidden;
   }
 }
-
 @media only screen and (max-width:767px) {
+  .selectBody_section {
+    width: 100%;
+    overflow: hidden;
+  }
+}
+@media only screen and (max-width:700px) {
   .selectBody_section {
     width: 100%;
     overflow: hidden;
@@ -131,11 +139,11 @@
     font-size: 20px;
   }
 
-  .bodyPart {
+  /* .bodyPart {
     width: 100%;
-  }
+  } */
 
-  .male_bodysection .heading,
+  /* .male_bodysection .heading,
   .male_bodysection .sub_heading {
     margin-left: 0;
   }
@@ -143,14 +151,41 @@
   .female_bodysection .heading,
 .female_bodysection .sub_heading {
   margin-right: 0;
-}
-/* .male_bodysection .bodyPart {
-  width: ;
 } */
+/* .male_bodysection .bodyPart {
+  width: 100%;
+  margin: 0 auto;
+  right: 0;
+} */
+
+
 }
 
-@media only screen and (max-width:469px) {
+@media only screen and (max-width:500px) {
   /* .selectBody_section {
     width:550px;
   } */
+  .body_part_link .heading {
+    font-size: 16px;
+  }
+  .sub_heading{
+    display: none;
+  }
+  .bodyPart:first-child {
+    height: 50px;
+  }
+  
+  .bodyPart:nth-last-child(2) {
+    height: 80px;
+  }
+  
+  .bodyPart:nth-last-child(3) {
+    height: 70px;
+  }
+  .bodyPart {
+    width: 220px;
+  }
+  .male_bodysection .bodyPart {
+    width: calc(100% - -119px);
+  }
 }
