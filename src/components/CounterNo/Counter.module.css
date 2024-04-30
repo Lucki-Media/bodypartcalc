@@ -1,0 +1,56 @@
+.counter_with_pattern{
+    display: flex;
+    align-items:end;
+}
+.count_no{
+    font-size:240px;
+    font-family: 'fontspring_demo_-_quiche_saRg';
+}
+.counter{
+    position: relative;
+}
+.show_counter_text{
+    font-size: 20px;
+    position: absolute;
+    bottom: 57%;
+    left: 59.6%;
+    font-family: 'fontspring_demo_-_quiche_saRg'
+}
+.pattern_img{
+    width: 100%;
+}
+@media only screen and (max-width:1150px) {
+    .Counter_count_no{
+        font-size: 190px;
+    }
+    .show_counter_text{
+    font-size: 13px;
+    left: 58.6%;
+    }
+}
+
+  @media only screen and (max-width:991px) {
+  .Counter_count_no{
+    font-size: 190px;
+  }
+  }
+@media only screen and (max-width:769px) {
+    .count_no{
+        font-size:200px;
+    }
+    .counter_with_pattern{
+        justify-content: center;
+    }
+    .show_counter_text{
+        font-size: 18px;
+        }
+}
+@media only screen and (max-width:469px) {
+    .count_no{
+        font-size:150px;
+    }
+    .show_counter_text{
+    font-size: 13px;
+    left: 58.6%;
+    }
+}

@@ -1,0 +1,108 @@
+.NextPrevNavigator_lists {
+    padding: 0;
+    margin: 0;
+    display: flex;
+    align-items: center;
+
+    li {
+        list-style: none;
+        padding: 0 10px;
+        @media screen and (max-width: 800px) {
+           padding: 0;
+          }
+
+      &.in_active{
+        opacity: 0.5;
+        pointer-events: none;
+      }    
+    }
+}
+
+.Navigator_item_prev {
+    .Navigator_item_prev_text {
+        color: #000;
+        font-size: 18px;
+        font-weight: 700;
+        @media screen and (max-width: 991px) {
+            display: none;
+          }
+    }
+
+    .Navigator_item_prev_icon {
+        position: relative;
+        background: #000;
+        border-radius: 50%;
+        display: inline-block;
+        height: 40px;
+        margin: 0 7px;
+        position: relative;
+        width: 40px;
+
+        &::after {
+            border: solid;
+            border-width: 0 2px 2px 0;
+            color: #fff;
+            content: "";
+            display: inline-block;
+            margin: 14px 0 0 17px;
+            padding: 4px;
+            -webkit-transform: rotate(135deg);
+            transform: rotate(135deg);
+        }
+    }
+
+}
+
+.Navigator_item_next {
+    .Navigator_item_next_text {
+        color: #000;
+        font-size: 18px;
+        font-weight: 700;
+        @media screen and (max-width: 991px) {
+          display: none;
+        }
+    }
+
+    .Navigator_item_next_icon {
+        position: relative;
+        background: #000;
+        border-radius: 50%;
+        display: inline-block;
+        height: 40px;
+        margin: 0 7px;
+        position: relative;
+        width: 40px;
+
+        &::after {
+            border: solid;
+            border-width: 2px 0 0 2px;
+            color: #fff;
+            content: "";
+            display: inline-block;
+            margin: 14px 0 0 14px;
+            padding: 4px;
+            -webkit-transform: rotate(135deg);
+            transform: rotate(135deg);
+        }
+    }
+
+}
+
+.NextPrevNavigator_item--middleheading {
+    flex: 1;
+    text-align: center;
+
+    .Navigator_item_Heading {
+        h2 {
+            margin: 0 0 10px 0;
+
+        }
+       span{
+            font-size: 18px;
+        }
+    }
+}
+.cal_navigations_Container{
+    padding: 20px 0;
+    border-bottom: 1px solid #ddd;
+}
