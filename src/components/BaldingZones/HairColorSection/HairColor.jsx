@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from 'react-router-dom';
+import { useCookies } from 'react-cookie';
 import styles from "./HairColor.module.css";
 import Main_desc from "../../MainContent/MainDesc";
 import Select2 from "react-select2-wrapper";
@@ -8,14 +9,17 @@ import "./hairColor.css";
 
 const HairColor = () => {
   const navigate = useNavigate();
+  const [cookies, setCookie] = useCookies(['hairColor']);
+  const [skinTypecookies, setskinTypeCookie] = useCookies(['skinType']);
   const [hairColorMoreOption, setHairColorMoreOption] = useState([]);
   const [loading, setLoading] = useState(true);
-
+  const [hColor, sethColor] = useState([]);
+  const [dynamicValue, setDynamicValue] = useState({}); // New state for dynamic value
+  
   useEffect(() => {
     fetch(`${process.env.REACT_APP_URL}/build-my-hair/wp-json/bmh-hair-calculator/v1/data`)
       .then((response) => response.json())
       .then((data) => {
-        console.log(data);
         setHairColorMoreOption(data.more_options);
         setLoading(false);
       })
@@ -24,6 +28,23 @@ const HairColor = () => {
         setLoading(false);
       });
   }, []);
+
+  const handleOnChange = (item, selectedValue) => {
+    if(item.heading === 'Hair Color'){
+      setCookie("hairColor", selectedValue, {
+        path: "/",
+        maxAge: 604800,
+      });
+    }
+
+    if(item.heading === 'Skin Type'){ 
+      setskinTypeCookie("skinType", selectedValue, {
+      path: "/",
+      maxAge: 604800,
+    });
+  }
+   
+  };
 
   return (
     <div>
@@ -44,7 +65,15 @@ const HairColor = () => {
                     <div className={`hair_color_selector ${styles.hair_color_selector}`}>
                       <Select2
                         data={JSON.parse(item.nested_repeater)}
-                        value={JSON.parse(item.nested_repeater)[0]} // Setting default value
+                        value={dynamicValue[item.heading] || JSON.parse(item.nested_repeater)[0]}
+                        onChange={(e) => {
+                          const value = e.target.value;
+                          setDynamicValue(prevState => ({
+                            ...prevState,
+                            [item.heading]: value
+                          }));
+                          handleOnChange(item, value);
+                        }}
                       />
                     </div>
                   </div>
