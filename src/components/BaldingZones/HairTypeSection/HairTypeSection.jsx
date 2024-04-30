@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from 'react-router-dom';
+import { useCookies } from 'react-cookie'; // Import useCookies hook
 import styles from "./HairType.module.css";
 import Main_desc from "../../MainContent/MainDesc";
 
@@ -7,12 +8,7 @@ const HairTypeSection = () => {
   const navigate = useNavigate();
   const [hairTypeData, setHairTypeData] = useState(null);
   const [loading, setLoading] = useState(true); // Add loading state
-  const handleNext = () => {
-    navigate("/hairColor");
-  };
-  const handlePrev = () => {
-    navigate("/skintone");
-  };
+  const [cookies, setCookie] = useCookies(['hairType']); // Define a cookie named 'hairType'
 
   useEffect(() => {
     // Fetch data from the API endpoint
@@ -28,6 +24,18 @@ const HairTypeSection = () => {
         setLoading(false);
       });
   }, []); 
+
+  // Function to set the hair type cookie
+  const setHairTypeCookie = (hairType) => {
+    setCookie('hairType', hairType, { path: '/' }); // Set the cookie named 'hairType' with the value 'hairType'
+  }
+
+  const handleNext = () => {
+    navigate("/hairColor");
+  };
+  const handlePrev = () => {
+    navigate("/skintone");
+  };
 
   return (
     <div>
@@ -50,15 +58,16 @@ const HairTypeSection = () => {
                     <img
                       className={styles.tone_img}
                       src={item.img_f}
-                      alt="Straight"
+                      alt={item.text_f} // Use hair type text as alt text
                     />
                   </div>
                   <div className={styles.title_group}>
                     <input
                       type="radio"
                       name="hairType"
-                      value="Straight"
+                      value={item.text_f} // Use hair type text as value
                       defaultChecked={index === 0} // Set defaultChecked for the first item
+                      onChange={() => setHairTypeCookie(item.text_f)} // Call setHairTypeCookie on change
                     />
                     <h6 className={styles.title}>{item.text_f}</h6>
                   </div>

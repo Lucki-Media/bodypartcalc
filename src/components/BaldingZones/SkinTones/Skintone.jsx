@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import { useCookies } from 'react-cookie'; // Import useCookies hook
 import styles from "./skintone.module.css";
 import Main_desc from "../../MainContent/MainDesc";
 
-
 const Skintone = () => {
   const navigate = useNavigate();
+  const [cookies, setCookie] = useCookies(['skinTone']); // Define skinTone cookie
   const [skinToneData, setSkinToneData] = useState(null);
   const [loading, setLoading] = useState(true); // Add loading state
 
@@ -16,8 +17,6 @@ const Skintone = () => {
   const handlePrev = () => {
     navigate("/horizontalTab");
   };
-
-
 
   useEffect(() => {
     // Fetch data from the API endpoint
@@ -33,6 +32,13 @@ const Skintone = () => {
         setLoading(false);
       });
   }, []);
+
+  // Function to handle radio button change
+  const handleSkinToneChange = (event) => {
+    const selectedSkinTone = event.target.value;
+    const sanitizedSkinTone = selectedSkinTone.replace(/\s+/g, "-"); // Replace spaces with underscores
+    setCookie('skinTone', sanitizedSkinTone, { path: '/' }); // Set the skinTone cookie
+  };
 
   return (
     <div>
@@ -64,13 +70,13 @@ const Skintone = () => {
                             name="skinTone"
                             value={item.text_f}
                             defaultChecked={index === 0} // Set defaultChecked for the first item
+                            onChange={handleSkinToneChange} // Add onChange event handler
                           />
                           <h6 className={styles.title}>{item.text_f}</h6>
                         </div>
                       </div>
                     </div>
                   ))}
-
                 </div>
               </div>
             </div>
