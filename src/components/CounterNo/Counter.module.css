@@ -28,6 +28,13 @@
     left: 58.6%;
     }
 }
+@media only screen and (max-width:1380px) {
+    .counter_with_pattern{
+        align-items: center;
+        justify-content: center;
+
+    }
+}
 
   @media only screen and (max-width:991px) {
   .Counter_count_no{

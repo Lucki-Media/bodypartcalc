@@ -3,21 +3,25 @@
   border-radius: 38px;
   width: calc(750px - 50px);
   height: 770px;
-  margin-top: 30px;
+  margin: 60px auto 30px;
 }
+
 .Body_section {
   display: flex;
 }
+
 .female_bodysection,
 .bodyImg_section,
 .male_bodysection {
   width: 33%;
 }
+
 .bodyZoneimg {
   position: relative;
   z-index: 2;
   width: 100%;
 }
+
 .bodyPart {
   cursor: pointer;
   border-bottom: 3px solid #d5d1d1;
@@ -32,17 +36,21 @@
 .male_bodysection .bodyPart {
   position: relative;
   z-index: 1;
-  right:116px;
+  right: 116px;
 }
+
 .bodyPart:first-child {
   height: 195px;
 }
+
 .bodyPart:nth-last-child(2) {
   height: 184px;
 }
+
 .bodyPart:nth-last-child(3) {
   height: 209px;
 }
+
 .bodyPart:last-child {
   border-bottom: transparent;
 }
@@ -50,6 +58,7 @@
 .body_part_link {
   text-decoration: none;
 }
+
 .body_part_link .heading {
   font-family: "quiche_sansmedium";
   font-weight: normal;
@@ -58,6 +67,7 @@
   color: #1c1c1c;
   margin: 0;
 }
+
 .sub_heading {
   font-family: "quiche_sansmedium";
   font-weight: normal;
@@ -67,34 +77,80 @@
   margin: 10px 0;
   opacity: 0;
 }
+
 .bodyPart:hover .sub_heading {
   opacity: 1;
 }
+
 .female_bodysection .heading,
 .female_bodysection .sub_heading {
   margin-right: 80px;
 }
+
 .male_bodysection .heading,
 .male_bodysection .sub_heading {
   margin-left: 80px;
 }
 
-@media only screen and (max-width:1250px) {
 
-
-}
 @media only screen and (max-width:991px) {
 
   .selectBody_section {
-    width:700px;
+    width: 700px;
     height: auto;
   }
+
   .male_bodysection .bodyPart {
-    right: 116px;
+    right: 150px;
   }
 }
-@media only screen and (max-width:469px) {
+
+@media only screen and (max-width:767px) {
   .selectBody_section {
-    width:550px;
+    width: 100%;
+    overflow: hidden;
   }
+
+  .male_bodysection .bodyPart {
+    width: calc(100% - -180px);
+  }
+
+  .bodyPart:first-child {
+    height: 120px;
+  }
+
+  .bodyPart:nth-last-child(2) {
+    height: 176px;
+  }
+
+  .bodyPart:nth-last-child(3) {
+    height: 120px;
+  }
+
+  .body_part_link .heading {
+    font-size: 20px;
+  }
+
+  .bodyPart {
+    width: 100%;
+  }
+
+  .male_bodysection .heading,
+  .male_bodysection .sub_heading {
+    margin-left: 0;
+  }
+
+  .female_bodysection .heading,
+.female_bodysection .sub_heading {
+  margin-right: 0;
+}
+/* .male_bodysection .bodyPart {
+  width: ;
+} */
+}
+
+@media only screen and (max-width:469px) {
+  /* .selectBody_section {
+    width:550px;
+  } */
 }

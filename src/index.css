@@ -99,6 +99,9 @@ opacity: 44%;
 .react-tabs__tab--selected{
 opacity: 1;
 }
-/* .img-mapper-img{
+#img-mapper {
+margin: 0 auto !important;
+}
+/* #img-mapper img{
   width: 100%;
 } */
