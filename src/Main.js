@@ -9,22 +9,7 @@ import HairTypeSection from './components/BaldingZones/HairTypeSection/HairTypeS
 import HairColor from './components/BaldingZones/HairColorSection/HairColor';
 import HtContactForm from './components/HtContactForm/HtContactForm';
 
-
-
 function Main() {
-  useEffect(() => {
-    // Fetch data from the API endpoint
-    fetch("https://dev.luckistore.in/build-my-hair/wp-json/bmh-hair-calculator/v1/data")
-      .then((response) => response.json())
-      .then((data) => {
-        console.log(data);
-        window.initData = data;
-      })
-      .catch((error) => {
-        console.error("Error fetching data:", error);
-        // setLoading(false);
-      });
-  }, []); 
   return (
     <>
     {/* <HorizontalTab/> */}
