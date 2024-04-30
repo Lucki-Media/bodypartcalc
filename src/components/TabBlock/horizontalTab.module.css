@@ -20,7 +20,7 @@
     color: #1C1C1C;
     font-family: 'quiche_sansmedium';
     outline: none;
-    cursor: pointer;
+    cursor: pointer;  
 }
 .zone_title__tab--selected {
     opacity: 44%;
@@ -33,7 +33,6 @@
     rotate: 17deg;
     margin: -17px 30px;
 }
-
 .hairMapping{
     position: relative;
 }
