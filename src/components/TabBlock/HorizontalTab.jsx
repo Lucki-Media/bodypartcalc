@@ -13,7 +13,7 @@ const HorizontalTab = () => {
   };
   return (
     <>
-      <div class="global_container">
+      <div className="global_container">
         <div className={styles.zones_block}>
           <div className={styles.left_zone}>
             <MainDesc />
@@ -21,11 +21,11 @@ const HorizontalTab = () => {
           <div className={styles.right_zone}>
             <Tabs>
               <TabList className={styles.tab_group}>
-                <Tab className={styles.zone_title}>
+                <Tab className={`hair_tab_zone_title ${styles.zone_title}`}>
                   01. Select Your Balding Zones
                 </Tab>
                 <div className={styles.side_arrow}></div>
-                <Tab className={styles.zone_title}>02. Select Your Body</Tab>
+                <Tab className={`hair_tab_zone_title ${styles.zone_title}`}>02. Select Your Body</Tab>
               </TabList>
 
               <TabPanel className={styles.tab_one}>

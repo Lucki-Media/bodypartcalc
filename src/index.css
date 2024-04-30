@@ -92,3 +92,13 @@ code {
     margin: 0;
   }
 }
+
+.hair_tab_zone_title {
+opacity: 44%;
+}
+.react-tabs__tab--selected{
+opacity: 1;
+}
+/* .img-mapper-img{
+  width: 100%;
+} */
