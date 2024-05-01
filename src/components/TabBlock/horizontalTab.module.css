@@ -4,7 +4,7 @@
     padding: 0;
     align-items: center;
     justify-content: center;
-    margin-bottom: 30px;
+    /* margin-bottom: 30px; */
 }
 
 .zones_block{
@@ -25,6 +25,7 @@
     font-family: 'quiche_sansmedium';
     outline: none;
     cursor: pointer;  
+    line-height: 29px;
 }
 .zone_title__tab--selected {
     opacity: 44%;

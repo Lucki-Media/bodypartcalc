@@ -20,7 +20,7 @@ function Main() {
     {/* <BodyZones/> */}
     {/* <HairColor/> */}
     {/* <HtContactForm/> */}
-    <Router>
+    <Router basename={process.env.REACT_APP_BASE}>
     <Routes>
           <Route path="/" element={<HorizontalTab />} />
           <Route path="/horizontalTab" element={<HorizontalTab />} />
@@ -30,6 +30,7 @@ function Main() {
           <Route path="/htContactForm" element={<HtContactForm/>} />
         </Routes>
       </Router>
+
     </>
   )
 }

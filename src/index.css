@@ -105,3 +105,6 @@ margin: 0 auto !important;
 /* #img-mapper img{
   width: 100%;
 } */
+div#hc-root {
+  background-color: #fff;
+}

@@ -5,7 +5,8 @@ import Main from "./Main";
 import reportWebVitals from './reportWebVitals';
 import ".././src/fonts/stylesheet.css";
 
-const root = ReactDOM.createRoot(document.getElementById('root'));
+const root = ReactDOM.createRoot(document.getElementById('hc-root'));
+
 root.render(
   <React.StrictMode>
     <Main/>

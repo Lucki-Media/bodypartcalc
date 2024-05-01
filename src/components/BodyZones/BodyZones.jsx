@@ -1,6 +1,5 @@
 import React from 'react';
 import styles from './bodyZones.module.css';
-import bodyZoneimg from "../../image/bodyZoneimg.png";
 import rightArrow from "../../image/rightArrow.svg"
 const BodyZones = () => {
     return (
@@ -36,7 +35,7 @@ const BodyZones = () => {
                     <div className={styles.bodyImg_section}>
                         <img
                             className={styles.bodyZoneimg}
-                            src={bodyZoneimg}
+                            src={process.env.REACT_APP_URL + '/' + process.env.REACT_APP_PLUGIN_MEDIA_PATH_URL + 'bodyZoneimg.png'}
                             alt="bodyZone img"
                         />
                     </div>
