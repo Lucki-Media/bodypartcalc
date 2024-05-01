@@ -2,8 +2,6 @@ import React, { useEffect, useState } from 'react';
 import { useCookies } from 'react-cookie';
 import ImageMapper from 'react-img-mapper';
 import styles from './HairMap.module.css';
-import side_img from "../../../image/side_img.png";
-import top_img from "../../../image/top_img.png";
 // import { RadioGroup, RadioButton } from 'react-radio-buttons';
 
 
@@ -20,7 +18,7 @@ const HairMapping = () => {
     const [cookies, setCookie] = useCookies(["hairZone"]);
     const [selectedRadioValue, setSelectedRadioValue] = useState('minimal');
     const [hairSeverity, sethairSeverity] = useState([]);
- 
+
     //FOR FILL COLOR
     // const [activefillFirst, setactivefillFirst] = useState('');
     // const [activefillsecond, setactivefillsecond] = useState('');
@@ -132,16 +130,19 @@ const HairMapping = () => {
         setSelectedArea(false);
         if (selectedpopupArea && selectedRadioValue) {
             var arr = [...hairSeverity]; //copy array by value
-            let myObject = { number: selectedpopupArea, value: selectedRadioValue }; 
+            let myObject = { number: selectedpopupArea, value: selectedRadioValue };
             arr.push(myObject)
             sethairSeverity(arr)
         }
     };
-   
+
     useEffect(() => {
         // Effect code here...
-    }, [activeFirst, activesecond, activeThird, activeFour, activeFive, activeSix, activeSeven ]);
+    }, [activeFirst, activesecond, activeThird, activeFour, activeFive, activeSix, activeSeven]);
 
+
+    // console.log('REACT_APP_URL', process.env.REACT_APP_URL);
+    // console.log('REACT_APP_PLUGIN_MEDIA_PATH_URL', process.env.REACT_APP_PLUGIN_MEDIA_PATH_URL);
 
     const renderPopup = () => {
         if (selectedArea) {
@@ -238,7 +239,7 @@ const HairMapping = () => {
             <div className={styles.horizontal_tab_row}>
                 <div className={styles.image_left}>
                     <ImageMapper
-                        src={side_img}
+                        src={process.env.REACT_APP_URL + '/' + process.env.REACT_APP_PLUGIN_MEDIA_PATH_URL + 'side_img.png'}
                         map={MAP}
                         onClick={handleAreaClick}
                     // onMouseEnter={handleMouse} 
@@ -248,7 +249,7 @@ const HairMapping = () => {
                 </div>
                 <div className={styles.image_right}>
                     <ImageMapper
-                        src={top_img}
+                        src={process.env.REACT_APP_URL + '/' + process.env.REACT_APP_PLUGIN_MEDIA_PATH_URL + 'top_img.png'}
                         map={MAP2}
                         onClick={handleAreaClick}
                     // onMouseEnter={handleMouse} 

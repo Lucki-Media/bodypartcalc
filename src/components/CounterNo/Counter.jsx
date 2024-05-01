@@ -34,7 +34,7 @@ function Counter() {
         )}
       </div>
       <div className={styles.pattern_block}>
-        <img className={styles.pattern_img} src={Mask_Group} alt="pattern img" />
+        <img className={styles.pattern_img} src={process.env.REACT_APP_URL + '/' + process.env.REACT_APP_PLUGIN_MEDIA_PATH_URL + 'Mask_Group.png'} alt="pattern img" />
       </div>
     </div>
   );

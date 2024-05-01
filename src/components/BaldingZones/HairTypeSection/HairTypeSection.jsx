@@ -12,7 +12,7 @@ const HairTypeSection = () => {
 
   useEffect(() => {
     // Fetch data from the API endpoint
-    fetch(`${process.env.REACT_APP_URL}` + "/build-my-hair/wp-json/bmh-hair-calculator/v1/data")
+    fetch(`${process.env.REACT_APP_URL}` + "/wp-json/bmh-hair-calculator/v1/data")
       .then((response) => response.json())
       .then((data) => {
         console.log(data);
