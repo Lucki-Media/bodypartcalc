@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
+
 import { useCookies } from 'react-cookie'; // Import useCookies hook
 import styles from "./skintone.module.css";
 import Main_desc from "../../MainContent/MainDesc";
 
-const Skintone = () => {
-  const navigate = useNavigate();
+const Skintone = ({onNext , onPrev}) => {
+ 
   const [cookies, setCookie] = useCookies(['skinTone']); // Define skinTone cookie
   const [skinToneData, setSkinToneData] = useState(null);
   const [loading, setLoading] = useState(true); // Add loading state
@@ -39,13 +39,7 @@ const Skintone = () => {
     setCookie('skinTone', selectedSkinTone, { path: '/' }); // Set the skinTone cookie
   };
 
-  const handleNext = () => {
-    navigate("/hairTypeSection");
-  };
 
-  const handlePrev = () => {
-    navigate("/horizontalTab");
-  };
 
   return (
     <div>
@@ -89,12 +83,12 @@ const Skintone = () => {
             </div>
             <div className="bb_btn_block">
               <div className="bb_redirect_prev_btn">
-                <button className="bb_button" onClick={handlePrev}>
+                <button className="bb_button" onClick={onPrev}>
                   Prev
                 </button>
               </div>
-              <div className="bb_redirect_next_btn">
-                <button className="bb_button" onClick={handleNext}>
+              <div className="bb_redirect_next_btn" onClick={onNext}>
+                <button className="bb_button">
                   Next
                 </button>
               </div>

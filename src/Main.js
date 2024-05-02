@@ -1,8 +1,4 @@
 import React, { useState, useEffect } from "react";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-// import MainDesc from './components/MainContent/MainDesc';
-// import Counter from './components/CounterNo/Counter';
-// import BodyZones from './components/BodyZones/BodyZones';
 import HorizontalTab from './components/TabBlock/HorizontalTab';
 import Skintone from './components/BaldingZones/SkinTones/Skintone';
 import HairTypeSection from './components/BaldingZones/HairTypeSection/HairTypeSection';
@@ -10,27 +6,34 @@ import HairColor from './components/BaldingZones/HairColorSection/HairColor';
 import HtContactForm from './components/HtContactForm/HtContactForm';
 
 function Main() {
+  const [currentComponent, setCurrentComponent] = useState('HorizontalTab');
+
+  const showNextComponent = (componentName) => {
+    setCurrentComponent(componentName);
+  };
+
+  const showPrevComponent = (componentName) => {
+    setCurrentComponent(componentName);
+  };
+
   return (
     <>
-    {/* <HorizontalTab/> */}
-    {/* <MainDesc/> */}
-    {/* <Counter/> */}
-    {/* <Skintone/> */}
-    {/* <HairTypeSection/> */}
-    {/* <BodyZones/> */}
-    {/* <HairColor/> */}
-    {/* <HtContactForm/> */}
-    <Router basename={process.env.REACT_APP_BASE}>
-    <Routes>
-          <Route path="/" element={<HorizontalTab />} />
-          <Route path="/horizontalTab" element={<HorizontalTab />} />
-          <Route path="/skintone" element={<Skintone/>} />
-          <Route path="/hairTypeSection" element={<HairTypeSection/>} />
-          <Route path="/hairColor" element={<HairColor/>} />
-          <Route path="/htContactForm" element={<HtContactForm/>} />
-        </Routes>
-      </Router>
+      {/* <div className="HairZone">
+    <HorizontalTab/>   
+    </div>  
+    <Skintone/>
+    <HairTypeSection/>
+    <HairColor/>
+    <HtContactForm/> */}
 
+      <div className="Main">
+        {currentComponent === 'HorizontalTab' && <HorizontalTab onNext={() => showNextComponent('Skintone')} />}
+        {currentComponent === 'Skintone' && <Skintone onNext={() => showNextComponent('HairTypeSection')} onPrev={() => showPrevComponent('HorizontalTab')}  />}
+        {currentComponent === 'HairTypeSection' && <HairTypeSection onNext={() => showNextComponent('HairColor')} onPrev={() => showPrevComponent('Skintone')}  />}
+        {currentComponent === 'HairColor' && <HairColor onNext={() => showNextComponent('HtContactForm')} onPrev={() => showPrevComponent('HairTypeSection')} />}
+        {currentComponent === 'HtContactForm' && <HtContactForm />}
+
+      </div>
     </>
   )
 }

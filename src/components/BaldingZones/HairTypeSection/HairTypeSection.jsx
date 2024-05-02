@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from "react";
-import { useNavigate } from 'react-router-dom';
+
 import { useCookies } from 'react-cookie'; // Import useCookies hook
 import styles from "./HairType.module.css";
 import Main_desc from "../../MainContent/MainDesc";
 
-const HairTypeSection = () => {
-  const navigate = useNavigate();
+const HairTypeSection = ({onNext , onPrev}) => {
+
   const [hairTypeData, setHairTypeData] = useState(null);
   const [loading, setLoading] = useState(true); // Add loading state
   const [cookies, setCookie] = useCookies(['hairType']); // Define a cookie named 'hairType'
@@ -34,12 +34,6 @@ const HairTypeSection = () => {
     setCookie('hairType', hairType, { path: '/' }); // Set the cookie named 'hairType' with the value 'hairType'
   }
 
-  const handleNext = () => {
-    navigate("/hairColor");
-  };
-  const handlePrev = () => {
-    navigate("/skintone");
-  };
 
   return (
     <div>
@@ -83,10 +77,10 @@ const HairTypeSection = () => {
             </div>
             <div className="bb_btn_block">
               <div className="bb_redirect_prev_btn">
-                <button className="bb_button" onClick={handlePrev}>Prev</button>
+                <button className="bb_button" onClick={onPrev}>Prev</button>
               </div>
               <div className="bb_redirect_next_btn">
-                <button className="bb_button" onClick={handleNext}>Next</button>
+                <button className="bb_button" onClick={onNext}>Next</button>
               </div>
             </div>
           </div>

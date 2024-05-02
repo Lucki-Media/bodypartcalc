@@ -1,16 +1,13 @@
 import React from "react";
-import { useNavigate } from "react-router-dom";
+
 import MainDesc from "../MainContent/MainDesc";
 import styles from "./horizontalTab.module.css";
 import { Tab, Tabs, TabList, TabPanel } from "react-tabs";
 import HairMapping from "../BaldingZones/HairMapping/HairMapping";
 import BodyZones from "../BodyZones/BodyZones";
 
-const HorizontalTab = () => {
-  const navigate = useNavigate();
-  const handleNext = () => {
-    navigate("/skintone");
-  };
+const HorizontalTab = ({onNext}) => {
+
   return (
     <>
       <div className="global_container">
@@ -39,8 +36,9 @@ const HorizontalTab = () => {
             </Tabs>
           </div>
         </div>
+
         <div className="bb_redirect_next_btn">
-          <button className="bb_button" onClick={handleNext}>
+          <button className="bb_button" onClick={onNext}>
             Next
           </button>
         </div>

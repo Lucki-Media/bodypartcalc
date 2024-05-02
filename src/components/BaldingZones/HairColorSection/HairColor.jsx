@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import { useNavigate } from 'react-router-dom';
 import { useCookies } from 'react-cookie';
 import styles from "./HairColor.module.css";
 import Main_desc from "../../MainContent/MainDesc";
@@ -7,8 +6,8 @@ import Select2 from "react-select2-wrapper";
 import "../../../../node_modules/select2-component/dist/select2.min.css";
 import "./hairColor.css";
 
-const HairColor = () => {
-  const navigate = useNavigate();
+const HairColor = ({onNext , onPrev}) => {
+  
   const [cookies, setCookie] = useCookies(['hairColor']);
   const [skinTypecookies, setskinTypeCookie] = useCookies(['skinType']);
   const [hairColorMoreOption, setHairColorMoreOption] = useState([]);
@@ -113,11 +112,15 @@ const HairColor = () => {
               </div>
             </div>
             <div className="bb_btn_block">
-              <div className="bb_redirect_prev_btn">
-                <button className="bb_button" onClick={() => navigate("/hairTypeSection")}>Prev</button>
+            <div className="bb_redirect_prev_btn">
+                <button className="bb_button" onClick={onPrev}>
+                  Prev
+                </button>
               </div>
-              <div className="bb_redirect_next_btn">
-                <button className="bb_button" onClick={() => navigate("/htContactForm")}>Next</button>
+              <div className="bb_redirect_next_btn" onClick={onNext}>
+                <button className="bb_button">
+                  Next
+                </button>
               </div>
             </div>
           </div>
