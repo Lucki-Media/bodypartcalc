@@ -43,25 +43,26 @@ const BodyZones = () => {
                         <div className={styles.bodyPart}>
                             <a href="#" className={styles.body_part_link}>
                                 <h3 className={styles.heading}>Face .01</h3>
-                                <h5 className={styles.sub_heading}>read more <img src={rightArrow} alt="" /></h5>
+                                <h5 className={styles.sub_heading}>read more <img src={process.env.REACT_APP_URL + '/' + process.env.REACT_APP_PLUGIN_MEDIA_PATH_URL + 'rightArrow.svg'} alt="" /></h5>
+                                
                             </a>
                         </div>
                         <div className={styles.bodyPart}>
                             <a href="#" className={styles.body_part_link}>
                                 <h3 className={styles.heading}>Chest .02</h3>
-                                <h5 className={styles.sub_heading}>read more <img src={rightArrow} alt="" /></h5>
+                                <h5 className={styles.sub_heading}>read more <img src={process.env.REACT_APP_URL + '/' + process.env.REACT_APP_PLUGIN_MEDIA_PATH_URL + 'rightArrow.svg'} alt="" /></h5>
                             </a>
                         </div>
                         <div className={styles.bodyPart}>
                             <a href="#" className={styles.body_part_link}>
                                 <h3 className={styles.heading}>Hip .03</h3>
-                                <h5 className={styles.sub_heading}>read more <img src={rightArrow} alt="" /></h5>
+                                <h5 className={styles.sub_heading}>read more <img src={process.env.REACT_APP_URL + '/' + process.env.REACT_APP_PLUGIN_MEDIA_PATH_URL + 'rightArrow.svg'} alt="" /></h5>
                             </a>
                         </div>
                         <div className={styles.bodyPart}>
                             <a href="#" className={styles.body_part_link}>
                                 <h3 className={styles.heading}>Foot .04</h3>
-                                <h5 className={styles.sub_heading}>read more <img src={rightArrow} alt="" /></h5>
+                                <h5 className={styles.sub_heading}>read more <img src={process.env.REACT_APP_URL + '/' + process.env.REACT_APP_PLUGIN_MEDIA_PATH_URL + 'rightArrow.svg'} alt="" /></h5>
                             </a>
                         </div>
                     </div>

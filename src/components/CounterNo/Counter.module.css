@@ -1,67 +1,75 @@
-.counter_with_pattern{
-    display: flex;
-    align-items: baseline;
-    display: flex;
-    line-height: normal;
+.counter_with_pattern {
+  display: flex;
+  align-items: baseline;
+  display: flex;
+  line-height: normal;
 }
-.count_no{
-    font-size:300px;
-    font-family: 'fontspring_demo_-_quiche_saRg';
+.count_no {
+  font-size: 300px;
+  font-family: "fontspring_demo_-_quiche_saRg";
 }
-.counter{
-    position: relative;
-    overflow-wrap: initial;
-    word-break: initial;
+.counter {
+  position: relative;
+  overflow-wrap: initial;
+  word-break: initial;
 }
-.show_counter_text{
-    font-size: 27px;
-    position: absolute;
-    bottom: 57%;
-    left: 58.6%;
-    font-family: 'fontspring_demo_-_quiche_saRg'
+.show_counter_text {
+  font-size: 27px;
+  position: absolute;
+  bottom: 57%;
+  left: 58.6%;
+  font-family: "fontspring_demo_-_quiche_saRg";
 }
-.pattern_img{
-    width: 100%;
+.pattern_img {
+  width: 100%;
 }
-@media only screen and (max-width:1150px) {
-    .Counter_count_no{
-        font-size: 190px;
-    }
-    /* .show_counter_text{
+@media only screen and (max-width: 1150px) {
+  .Counter_count_no {
+    font-size: 190px;
+  }
+  /* .show_counter_text{
     font-size: 13px;
     left: 58.6%;
     } */
 }
-@media only screen and (max-width:1380px) {
-    .counter_with_pattern{
-        align-items: center;
-        justify-content: center;
-
-    }
+@media only screen and (max-width: 1380px) {
+  .counter_with_pattern {
+    align-items: center;
+    justify-content: center;
+  }
+  .count_no {
+    font-size: 240px;
+  }
+  .show_counter_text {
+    font-size: 22px;
+  }
 }
 
-  @media only screen and (max-width:991px) {
-  .Counter_count_no{
+@media only screen and (max-width: 991px) {
+  .Counter_count_no {
     font-size: 190px;
   }
-  }
-@media only screen and (max-width:769px) {
-    .count_no{
-        font-size:200px;
-    }
-    .counter_with_pattern{
-        justify-content: center;
-    }
-    .show_counter_text{
-        font-size: 18px;
-        }
 }
-@media only screen and (max-width:469px) {
-    .count_no{
-        font-size:150px;
-    }
-    .show_counter_text{
+@media only screen and (max-width: 769px) {
+  .count_no {
+    font-size: 200px;
+  }
+  .counter_with_pattern {
+    justify-content: center;
+  }
+  .show_counter_text {
+    font-size: 18px;
+  }
+  .show_counter_text {
+    bottom: 52%;
+  }
+}
+@media only screen and (max-width: 469px) {
+  .count_no {
+    font-size: 150px;
+  }
+  .show_counter_text {
     font-size: 13px;
     left: 58.6%;
-    }
+  }
 }
