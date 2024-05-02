@@ -1,8 +1,8 @@
 
 .hair_color_section {
     display: flex;
-    align-items: baseline;
-    padding: 110px 0;
+    align-items: center;
+    
   }
   .left_zone {
     width: 50%;
@@ -36,7 +36,7 @@
 @media only screen and (max-width: 769px) {
     .hair_color_section {
       flex-direction: column;
-      padding: 50px 0;
+      
     }
     .left_zone {
       width: 100%;

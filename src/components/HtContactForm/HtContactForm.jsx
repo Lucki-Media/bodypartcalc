@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import styles from './HtContactForm.module.css';
 
-const HtContactForm = () => {
+const HtContactForm = ({onNext}) => {
     // State variables to store form data
     const [formData, setFormData] = useState({
         name: '',
@@ -77,7 +77,7 @@ const HtContactForm = () => {
                                 />
                             </div>
                             <div className={styles.ht_formBtn}>
-                                <button type="submit" className="bb_button">Click here to see grafts and price</button>
+                                <button type="submit" className="bb_button" onClick={onNext}>Click here to see grafts and price</button>
                             </div>
                         </form>
                     </div>

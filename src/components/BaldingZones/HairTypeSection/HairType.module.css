@@ -1,6 +1,6 @@
 .hair_type_section {
   display: flex;
-  padding: 110px 0;
+  align-items: center;
 }
 .left_zone {
   width: 50%;
@@ -57,7 +57,7 @@
 @media only screen and (max-width: 769px) {
   .hair_type_section {
     flex-direction: column;
-    padding: 50px 0;
+ 
   }
   .left_zone {
     width: 100%;

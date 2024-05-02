@@ -37,11 +37,13 @@ const HorizontalTab = ({onNext}) => {
           </div>
         </div>
 
+      <div className="bb_navigation_page_button">
         <div className="bb_redirect_next_btn">
           <button className="bb_button" onClick={onNext}>
             Next
           </button>
         </div>
+      </div>
       </div>
     </>
   );

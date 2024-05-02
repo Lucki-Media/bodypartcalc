@@ -75,6 +75,7 @@ const HairTypeSection = ({onNext , onPrev}) => {
                 </div>
               </div>
             </div>
+            <div className="bb_navigation_page_button">
             <div className="bb_btn_block">
               <div className="bb_redirect_prev_btn">
                 <button className="bb_button" onClick={onPrev}>Prev</button>
@@ -82,6 +83,7 @@ const HairTypeSection = ({onNext , onPrev}) => {
               <div className="bb_redirect_next_btn">
                 <button className="bb_button" onClick={onNext}>Next</button>
               </div>
+            </div>
             </div>
           </div>
         </>
