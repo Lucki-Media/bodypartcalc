@@ -151,7 +151,7 @@ const HairMapping = () => {
 
                     <div className={styles.radio_popup}>
                         <p> Choose zone {selectedpopupArea} Hair loss severity:</p>
-                        <form>
+                        <form className={styles.popup_block}>
                             <div className={styles.input_style_fiels}>
                                 <label htmlFor="Minimal">
                                     <input

@@ -69,7 +69,7 @@
       transform: translate(-50%, 0px); */
     padding: 25px;
     z-index: 9;
-    width: 300px;
+    width: 200px;
     white-space: nowrap;
   }
   .radio_popup p {
@@ -78,9 +78,10 @@
     margin-top: 0px;
     margin-bottom: 0;
     line-height: 25px;
-    text-align: left;
+    text-align: center;
     font-family: "poppinsmedium";
     font-style: normal;
+    text-wrap: wrap;
   }
   .radio_popup p:last-child {
     margin-bottom: 15px;
@@ -95,6 +96,7 @@
     font-family: "poppinsmedium";
     font-style: normal;
     cursor: pointer;
+    width: 51%;
   }
   .radio_popup .input_style_fiels label{
 cursor: pointer;
@@ -107,7 +109,12 @@ cursor: pointer;
     margin-top: 15px;
     text-align: center;
   }
-  
+  .popup_block{
+    display: flex;
+    flex-wrap:wrap ;
+    align-items: center;
+    justify-content: center;
+  }
   .submit_button {
     padding: 10px 30px;
     font-family: "poppinsmedium";
