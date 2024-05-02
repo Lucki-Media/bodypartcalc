@@ -38,7 +38,7 @@ const HairTypeSection = ({onNext , onPrev}) => {
   return (
     <div>
       {loading ? (
-        <div className={styles.loader}>Loading...</div>
+        <div id="loading-bar-spinner" class="spinner"><div class="spinner-icon"></div></div>
       ) : (
         <>
           <div className="global_container">
