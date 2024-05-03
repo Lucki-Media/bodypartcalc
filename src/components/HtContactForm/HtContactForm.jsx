@@ -22,7 +22,7 @@ const HtContactForm = ({onNext}) => {
     const handleSubmit = (event) => {
         event.preventDefault();
         // You can handle form submission logic here, like sending data to an API
-        console.log(formData);
+        //console.log(formData);
         // Reset form fields after submission
         setFormData({
             name: '',

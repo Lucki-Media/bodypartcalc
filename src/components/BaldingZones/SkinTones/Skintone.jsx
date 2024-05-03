@@ -15,7 +15,7 @@ const Skintone = ({onNext , onPrev}) => {
     fetch(`${process.env.REACT_APP_URL}` + "/wp-json/bmh-hair-calculator/v1/data")
       .then((response) => response.json())
       .then((data) => {
-        console.log(data);
+        //console.log(data);
         setSkinToneData(data.skin_tone);
         setLoading(false);
       })

@@ -1,4 +1,4 @@
-import React from "react";
+import React,{useState} from "react";
 
 import MainDesc from "../MainContent/MainDesc";
 import styles from "./horizontalTab.module.css";
@@ -6,7 +6,13 @@ import { Tab, Tabs, TabList, TabPanel } from "react-tabs";
 import HairMapping from "../BaldingZones/HairMapping/HairMapping";
 import BodyZones from "../BodyZones/BodyZones";
 
-const HorizontalTab = ({onNext}) => {
+const HorizontalTab = ({onNext ,onTabSelect }) => {
+  const [selectedTabIndex, setSelectedTabIndex] = useState(1);
+
+  const handleTabSelect = (index) => {
+    setSelectedTabIndex(index);
+  };
+
 
   return (
     <>
@@ -16,7 +22,7 @@ const HorizontalTab = ({onNext}) => {
             <MainDesc />
           </div>
           <div className={styles.right_zone}>
-            <Tabs>
+            <Tabs selectedIndex={selectedTabIndex} onSelect={handleTabSelect}>
               <TabList className={styles.tab_group}>
                 <Tab className={`hair_tab_zone_title ${styles.zone_title}`}>
                   01. Select Your Balding Zones
@@ -37,13 +43,15 @@ const HorizontalTab = ({onNext}) => {
           </div>
         </div>
 
+        {selectedTabIndex === 0 && (
       <div className="bb_navigation_page_button">
         <div className="bb_redirect_next_btn">
           <button className="bb_button" onClick={onNext}>
-            Next
+            Next 
           </button>
         </div>
       </div>
+      )}
       </div>
     </>
   );

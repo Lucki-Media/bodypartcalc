@@ -4,10 +4,11 @@ import Back from "../../image/arrow-back.svg";
 import Bar from "../../image/menu.svg";
 import Searcicon from "../../image/icons-search.svg";
 
-const ResultFinalBlock = ({onPrev}) => {
+const ResultFinalBlock = ({onPrev }) => {
   const [isFilterPopupVisible, setIsFilterPopupVisible] = useState(false);
   const [isToggled, setToggled] = useState(false);
   const [ProductData, setProductData] = useState(null);
+  const [loading, setLoading] = useState(true);
 
   const handleToggle = () => {
     setToggled(!isToggled);
@@ -17,25 +18,34 @@ const ResultFinalBlock = ({onPrev}) => {
     setIsFilterPopupVisible(!isFilterPopupVisible);
   };
 
-  useEffect(() => {
-    // Fetch data from the API endpoint
+  const getProductData = async () => {
+    
     fetch(`${process.env.REACT_APP_URL}` + "/wp-json/bmh-get-product-list-api/v1/data")
       .then((response) => response.json())
       .then((data) => {
-        console.log('test', data.id);
-        setProductData(data);
+        ///console.log('test', data);
+       setProductData(data);
+      setLoading(false);
      
       })
       .catch((error) => {
         console.error("Error fetching data:", error);
-      
+        setLoading(false);
       });
-  }, []);
+};
+
+
+  useEffect(() => {
+    getProductData();
+  }, [ProductData]);
 
 
   return (
-    <>
-      <style>
+    <div>
+    {loading ? (
+      <div id="loading-bar-spinner" class="spinner"><div class="spinner-icon"></div></div>
+    ) : (
+    <><style>
         {`  
           .plus_minus{
           background: #fff;
@@ -122,12 +132,12 @@ const ResultFinalBlock = ({onPrev}) => {
                 Hair Restoration
               </div>
               <div className={styles.final_product_listing}>
-              {/* {ProductData.map((item) => ( */}
+                {ProductData.map((item) => ( 
                 <div className={styles.product_list}>
                   <div className={styles.product_box} id=''>
                     <span>  Hair loss</span>
                     <h4 className={styles.product_name}>
-                      {/* {item.name} */}
+                      {item.name} 
                       test
                     </h4>
 
@@ -142,7 +152,7 @@ const ResultFinalBlock = ({onPrev}) => {
                     </div>
                   </div>
                 </div>
-                {/* ))} */}
+                ))}  
                 {/* <div className={styles.product_list}>
                   <div className={styles.product_box}>
                     <span>  Hair loss</span>
@@ -175,6 +185,8 @@ const ResultFinalBlock = ({onPrev}) => {
         </div>
       </div>
     </>
+    )}
+    </div>
   )
 }
 

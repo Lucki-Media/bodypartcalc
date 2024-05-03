@@ -11,7 +11,7 @@ const HairMapping = (props) => {
     const sideMapRef = useRef(null);
     const topMapRef = useRef(null);
 
-    console.log(sideMapRef);
+    //console.log(sideMapRef);
     const initializeAreas = (areas) => {
         // Loop through each area and set the fillColor based on the active state
         return areas.map((area) => ({

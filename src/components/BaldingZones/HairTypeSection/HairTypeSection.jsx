@@ -15,7 +15,7 @@ const HairTypeSection = ({onNext , onPrev}) => {
     fetch(`${process.env.REACT_APP_URL}` + "/wp-json/bmh-hair-calculator/v1/data")
       .then((response) => response.json())
       .then((data) => {
-        console.log(data);
+        //console.log(data);
         setHairTypeData(data.hair_type);
         setLoading(false);
         // Set the default selected hair type to the cookie when component mounts
