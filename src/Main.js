@@ -35,7 +35,7 @@ function Main() {
         {currentComponent === 'HairColor' && <HairColor onNext={() => showNextComponent('HtContactForm')} onPrev={() => showPrevComponent('HairTypeSection')} />}
         {currentComponent === 'HtContactForm' && <HtContactForm onNext={() => showNextComponent('ResultContent')} />}
         {currentComponent === 'ResultContent' && <ResultBlock onNext={() => showNextComponent('ResultFinalBlock')}/>}
-        {currentComponent === 'ResultFinalBlock' && <ResultFinalBlock/>}
+        {currentComponent === 'ResultFinalBlock' && <ResultFinalBlock onPrev={() => showPrevComponent('HorizontalTab')}/>}
    
     </>
   )
