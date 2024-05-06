@@ -130,7 +130,7 @@ const HairMapping = () => {
         setSelectedArea(false);
         if (selectedpopupArea && selectedRadioValue) {
             var arr = [...hairSeverity]; //copy array by value
-            let myObject = { number: selectedpopupArea, value: selectedRadioValue };
+            let myObject = { Hair_Zone: selectedpopupArea, Severity: selectedRadioValue };
             arr.push(myObject)
             sethairSeverity(arr)
         }

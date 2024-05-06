@@ -9,7 +9,7 @@ import ResultFinalBlock from "./components/ResultBlock/ResultFinalBlock";
 
 function Main() {
   const [currentComponent, setCurrentComponent] = useState('HorizontalTab');
-  const [selectedTabIndex, setSelectedTabIndex] = useState(1);
+  const [selectedTabIndex, setSelectedTabIndex] = useState('1');
 
   const showNextComponent = (componentName) => {
     setCurrentComponent(componentName);
@@ -21,7 +21,7 @@ function Main() {
 
   const handleTabSelect = (index) => {
     setSelectedTabIndex(index);
-    console.log("yamini",index);
+    //console.log("yamini",index);
   };
 
   return (

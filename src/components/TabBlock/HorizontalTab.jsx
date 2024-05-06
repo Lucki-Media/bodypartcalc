@@ -7,7 +7,7 @@ import HairMapping from "../BaldingZones/HairMapping/HairMapping";
 import BodyZones from "../BodyZones/BodyZones";
 
 const HorizontalTab = ({onNext ,onTabSelect }) => {
-  const [selectedTabIndex, setSelectedTabIndex] = useState(1);
+  const [selectedTabIndex, setSelectedTabIndex] = useState(0);
 
   const handleTabSelect = (index) => {
     setSelectedTabIndex(index);
