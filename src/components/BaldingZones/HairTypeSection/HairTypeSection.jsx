@@ -60,14 +60,18 @@ const HairTypeSection = ({onNext , onPrev}) => {
                           />
                         </div>
                         <div className={styles.title_group}>
+                          <label htmlFor={item.text_f.replace(/\s+/g, '_')}>
                           <input
                             type="radio"
                             name="hairType"
-                            value={item.text_f} // Use hair type text as value
+                            id={item.text_f.replace(/\s+/g, '_')}
+                           value={item.text_f.replace(/\s+/g, '_')}
                             defaultChecked={index === 0} // Set defaultChecked for the first item
                             onChange={() => setHairTypeCookie(item.text_f)} // Call setHairTypeCookie on change
                           />
-                          <h6 className={styles.title}>{item.text_f}</h6>
+                          {item.text_f}
+                          
+                          </label>
                         </div>
                       </div>
                     </div>

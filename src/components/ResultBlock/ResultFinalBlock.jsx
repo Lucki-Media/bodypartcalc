@@ -18,6 +18,10 @@ const ResultFinalBlock = ({onPrev }) => {
     setIsFilterPopupVisible(!isFilterPopupVisible);
   };
 
+  const handleCloseButtonClick = () => {
+    setIsFilterPopupVisible(false); // Set isFilterPopupVisible to false when close button is clicked
+  };
+
   const getProductData = async () => {
     
     fetch(`${process.env.REACT_APP_URL}` + "/wp-json/bmh-get-product-list-api/v1/data")
@@ -72,7 +76,7 @@ const ResultFinalBlock = ({onPrev }) => {
                 <div className={`filter_pop_icon ${styles.filter_icon}`} onClick={handleFilterIconClick} > <img src={Bar}></img><span>Filter</span></div>
                 {isFilterPopupVisible && (
                   <div className={`filter_popup_col ${styles.filter_popup}`}>
-                    <div className={styles.close_btn}>X</div>
+                    <div className={styles.close_btn} onClick={handleCloseButtonClick}>X</div>
                     <div className={styles.toggle_gender}>
                       <h4 className={styles.popup_filter_heading}>Gender</h4>
                       <div className={styles.toggle_on_off}>
@@ -138,7 +142,6 @@ const ResultFinalBlock = ({onPrev }) => {
                     <span>  Hair loss</span>
                     <h4 className={styles.product_name}>
                       {item.name} 
-                      test
                     </h4>
 
                     <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. </p>

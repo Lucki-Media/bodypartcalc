@@ -241,3 +241,10 @@ position: relative;
   top: 50%;
   transform: translate(0px, -50%);
 }
+input ,a{
+  outline: none;
+}
+label
+{
+  cursor: pointer;
+}

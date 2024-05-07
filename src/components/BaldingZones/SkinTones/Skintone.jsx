@@ -66,14 +66,17 @@ const Skintone = ({onNext , onPrev}) => {
                           />
                         </div>
                         <div className={styles.title_group}>
+                          <label htmlFor={item.text_f.replace(/\s+/g, '_')}>
                           <input
                             type="radio"
                             name="skinTone"
-                            value={item.text_f}
+                            id={item.text_f.replace(/\s+/g, '_')}
+                           value={item.text_f.replace(/\s+/g, '_')}
                             defaultChecked={index === 0} // Set defaultChecked for the first item
                             onChange={handleSkinToneChange} // Add onChange event handler
                           />
-                          <h6 className={styles.title}>{item.text_f}</h6>
+                          {item.text_f}
+                          </label>
                         </div>
                       </div>
                     </div>

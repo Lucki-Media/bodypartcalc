@@ -315,6 +315,7 @@ input:checked+.slider:before {
     border-radius: 50%;
 }
 .close_btn{
+    cursor: pointer;
     position: absolute;
     right: 15px;
     top: 15px;
