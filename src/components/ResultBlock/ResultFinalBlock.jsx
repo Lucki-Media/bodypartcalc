@@ -121,7 +121,7 @@ const ResultFinalBlock = ({ onPrev, selectedBodyPartCB }) => {
       // If the item is not in the cart, add it with a quantity of 1
       setCartItems([...cartItems, { ...item, quantity: 1 }]);
     }
-  
+
     // Call the API to add the product to the WooCommerce cart
     // fetch(`${process.env.REACT_APP_URL}/wp-json/bmh/v1/add-to-cart`, {
     //   method: 'POST',
@@ -133,7 +133,7 @@ const ResultFinalBlock = ({ onPrev, selectedBodyPartCB }) => {
     //     quantity: 1,
     //     productName : item.name, 
     //     productPrice : item.price, // Assuming always adding one quantity
-       
+
     //   }),
     // })
     // .then(response => {
@@ -148,7 +148,7 @@ const ResultFinalBlock = ({ onPrev, selectedBodyPartCB }) => {
     //   console.error('Error adding product to cart:', error);
     // });
   };
-  
+
 
   const removeFromCart = (itemId) => {
     // Filter out the item with the given itemId from the cart
@@ -219,7 +219,7 @@ const ResultFinalBlock = ({ onPrev, selectedBodyPartCB }) => {
                         </div>
 
                         <div className={styles.filter_apply_btn}>
-                          <button className={`bb_button ${styles.bb_btns}`}  onClick={handleAppliedFilter} >
+                          <button className={`bb_button ${styles.bb_btns}`} onClick={handleAppliedFilter} >
                             Apply Filter
                           </button>
                         </div>
@@ -272,15 +272,32 @@ const ResultFinalBlock = ({ onPrev, selectedBodyPartCB }) => {
                     </div>
                     <div className={styles.cart_product_listing}>
                       {cartItems.map((item, index) => (
-                        <div key={index}>
-                          <div>{item.name}</div>
-                          <div>{item.price}</div>
-                          <div onClick={() => removeFromCart(item.id)}>Remove</div>
+                        <div className={styles.cart_row} key={index}>
+                          <div className={styles.cart_product_add_remove}>
+                            <div className={styles.remove_circle} onClick={() => removeFromCart(item.id)}>x</div>
+                            <div className={styles.cart_P_name}>{item.name}</div>
+                          </div>
+                          <div className={styles.cart_price}>${item.price}</div>
                         </div>
                       ))}
+                      <div className={styles.cart_total_row}>
+                        <div className={styles.cart_product_add_remove}>
+                          <div className={styles.cart_P_name}>Total</div>
+                        </div>
+                        <div className={styles.cart_price}>$200</div>
+                      </div>
                     </div>
                   </div>
-                </div>
+                  <div className={styles.process_checkout_btn}>
+
+                    <div className={styles.process_formBtn}>
+                      <button type="submit" className={`bb_button ${styles.check_btn}`} >Proceed To checkout</button>
+                    </div>
+                    <button className="bb_button"> Contact Us</button>
+                    </div>
+                                    </div>
+
+               
               </div>
             </div>
           </div>
