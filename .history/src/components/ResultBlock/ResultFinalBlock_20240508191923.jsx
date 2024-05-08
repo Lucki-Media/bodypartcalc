@@ -123,30 +123,30 @@ const ResultFinalBlock = ({ onPrev, selectedBodyPartCB }) => {
     }
   
     // Call the API to add the product to the WooCommerce cart
-    // fetch(`${process.env.REACT_APP_URL}/wp-json/bmh/v1/add-to-cart`, {
-    //   method: 'POST',
-    //   headers: {
-    //     'Content-Type': 'application/json',
-    //   },
-    //   body: JSON.stringify({
-    //     productId: item.id,
-    //     quantity: 1,
-    //     productName : item.name, 
-    //     productPrice : item.price, // Assuming always adding one quantity
+    fetch(`${process.env.REACT_APP_URL}/wp-json/bmh/v1/add-to-cart`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        productId: item.id,
+        quantity: 1,
+        productName : item.name, 
+        productPrice : item.price, // Assuming always adding one quantity
        
-    //   }),
-    // })
-    // .then(response => {
-    //   if (!response.ok) {
-    //     throw new Error('Failed to add product to cart');
-    //   }
-    //   // Handle successful response
-    //   console.log('Product added to cart successfully');
-    // })
-    // .catch(error => {
-    //   // Handle errors
-    //   console.error('Error adding product to cart:', error);
-    // });
+      }),
+    })
+    .then(response => {
+      if (!response.ok) {
+        throw new Error('Failed to add product to cart');
+      }
+      // Handle successful response
+      console.log('Product added to cart successfully');
+    })
+    .catch(error => {
+      // Handle errors
+      console.error('Error adding product to cart:', error);
+    });
   };
   
 
@@ -178,7 +178,7 @@ const ResultFinalBlock = ({ onPrev, selectedBodyPartCB }) => {
                     </span>
                   </div>
                   <div className={styles.filter_final_row}>
-                    <div className={`filter_pop_icon ${styles.filter_icon}`} onClick={handleFilterIconClick} > <img src={process.env.REACT_APP_URL + '/' + process.env.REACT_APP_PLUGIN_MEDIA_PATH_URL + 'menu.svg'}></img><span>Filter</span></div>
+                    <div className={`filter_pop_icon ${styles.filter_icon}`} onClick={handleFilterIconClick} > <img src={process.env.REACT_APP_URL + '/' + process.env.REACT_APP_PLUGIN_MEDIA_PATH_URL + 'icons-search.svg'}></img><span>Filter</span></div>
                     {isFilterPopupVisible && (
                       <div className={`filter_popup_col ${styles.filter_popup}`}>
                         <div className={styles.close_btn} onClick={handleCloseButtonClick}>X</div>

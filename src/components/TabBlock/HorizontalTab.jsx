@@ -9,8 +9,6 @@ import BodyZones from "../BodyZones/BodyZones";
 const HorizontalTab = ({onNext , onTabSelect , bodypartcallback }) => {
   const [selectedTabIndex, setSelectedTabIndex] = useState(0);
  
-
-
   const handleTabSelect = (index) => {
     setSelectedTabIndex(index);
     onTabSelect(index);
@@ -18,14 +16,9 @@ const HorizontalTab = ({onNext , onTabSelect , bodypartcallback }) => {
 
   const onClickSelectedBodyPart = (bodypart) => {
    bodypartcallback(bodypart);
-   console.log(onTabSelect);
-
    const nextComponent = "ResultContent"; // Set the next component dynamically based on selected body part
-  onNext(nextComponent);
+   onNext(nextComponent);
    
-
-  //  onNext("ResultContent");
-  
   };
 
 

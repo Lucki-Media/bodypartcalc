@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import HorizontalTab from "./components/TabBlock/HorizontalTab";
 import Skintone from "./components/BaldingZones/SkinTones/Skintone";
 import HairTypeSection from "./components/BaldingZones/HairTypeSection/HairTypeSection";
@@ -21,13 +21,11 @@ function Main() {
   };
 
   const handleTabSelect = (index) => {
-    setSelectedTabIndex(index);
     console.log(index);
+    setSelectedTabIndex(index);
   };
 
   const OnClickSelectedBodyPart = (bodypart) => {
-    console.log("bodypart");
-    console.log(bodypart);
     setSelectedBodyPart(bodypart);
   };
 
@@ -73,7 +71,7 @@ function Main() {
           selectedBodyPartCB={selectedBodyPart}
           onPrev={() => {
             showPrevComponent("HorizontalTab");
-            setSelectedTabIndex(1); // Select the second tab when navigating back
+            handleTabSelect(0); // Select the second tab when navigating back
           }}
         />
       )}

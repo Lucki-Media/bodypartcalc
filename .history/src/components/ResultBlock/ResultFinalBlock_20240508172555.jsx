@@ -88,7 +88,7 @@ const ResultFinalBlock = ({ onPrev, selectedBodyPartCB }) => {
     const tagParam = tagFilters.filter(Boolean).join(',');
     const bodypartParam = bodypartFilters.filter(Boolean).join(',');
 
-
+    
 
     fetch(`${process.env.REACT_APP_URL}/wp-json/bmh-get-product-list-api/v1/data?bodypart=${bodypartParam}&tag=${tagParam}&search=${searchQuery}`)
       .then((response) => response.json())
@@ -123,30 +123,27 @@ const ResultFinalBlock = ({ onPrev, selectedBodyPartCB }) => {
     }
   
     // Call the API to add the product to the WooCommerce cart
-    // fetch(`${process.env.REACT_APP_URL}/wp-json/bmh/v1/add-to-cart`, {
-    //   method: 'POST',
-    //   headers: {
-    //     'Content-Type': 'application/json',
-    //   },
-    //   body: JSON.stringify({
-    //     productId: item.id,
-    //     quantity: 1,
-    //     productName : item.name, 
-    //     productPrice : item.price, // Assuming always adding one quantity
-       
-    //   }),
-    // })
-    // .then(response => {
-    //   if (!response.ok) {
-    //     throw new Error('Failed to add product to cart');
-    //   }
-    //   // Handle successful response
-    //   console.log('Product added to cart successfully');
-    // })
-    // .catch(error => {
-    //   // Handle errors
-    //   console.error('Error adding product to cart:', error);
-    // });
+    fetch(`${process.env.REACT_APP_URL}/wp-json/bmh/v1/add-to-cart`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        productId: item.id,
+        quantity: 1, // Assuming always adding one quantity
+      }),
+    })
+    .then(response => {
+      if (!response.ok) {
+        throw new Error('Failed to add product to cart');
+      }
+      // Handle successful response
+      console.log('Product added to cart successfully');
+    })
+    .catch(error => {
+      // Handle errors
+      console.error('Error adding product to cart:', error);
+    });
   };
   
 
@@ -166,7 +163,7 @@ const ResultFinalBlock = ({ onPrev, selectedBodyPartCB }) => {
             <div className="global_container">
               <div className={styles.filter_row}>
                 <div className={styles.back_btn} onClick={onPrev}>
-                  <span> <img src={process.env.REACT_APP_URL + '/' + process.env.REACT_APP_PLUGIN_MEDIA_PATH_URL + 'arrow-back.svg'} alt="" />
+                  <span> <img src={Back} alt="" />
                     Back</span>
                 </div>
 
@@ -174,11 +171,11 @@ const ResultFinalBlock = ({ onPrev, selectedBodyPartCB }) => {
                   <div className={styles.search_box}>
                     <input type="search" className={styles.search} placeholder="Search here" value={searchQuery} onChange={handleSearchInputChange} />
                     <span className={styles.icon}>
-                      <img src={process.env.REACT_APP_URL + '/' + process.env.REACT_APP_PLUGIN_MEDIA_PATH_URL + 'icons-search.svg'} alt="" />
+                      <img src={Searcicon} alt="" />
                     </span>
                   </div>
                   <div className={styles.filter_final_row}>
-                    <div className={`filter_pop_icon ${styles.filter_icon}`} onClick={handleFilterIconClick} > <img src={process.env.REACT_APP_URL + '/' + process.env.REACT_APP_PLUGIN_MEDIA_PATH_URL + 'menu.svg'}></img><span>Filter</span></div>
+                    <div className={`filter_pop_icon ${styles.filter_icon}`} onClick={handleFilterIconClick} > <img src={Bar}></img><span>Filter</span></div>
                     {isFilterPopupVisible && (
                       <div className={`filter_popup_col ${styles.filter_popup}`}>
                         <div className={styles.close_btn} onClick={handleCloseButtonClick}>X</div>

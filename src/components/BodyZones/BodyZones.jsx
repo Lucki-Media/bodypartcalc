@@ -46,7 +46,7 @@ const BodyZones = (props) => {
 
                         </div>
                         <div className={styles.bodyPart}>
-                            <a href="javascript:;" className={styles.body_part_link} onClick={() => handlepageRedirect('Female-Legs')}>
+                            <a href="javascript:;" className={styles.body_part_link} onClick={() => handlepageRedirect('Female-Legs/knees')}>
                                 <h3 className={styles.heading}>05. Legs/knees</h3>
                                 <h5 className={styles.sub_heading}>read more <img src={rightArrow} alt="" /></h5>
                             </a>
@@ -90,7 +90,7 @@ const BodyZones = (props) => {
                             </ul>
                         </div>
                         <div className={styles.bodyPart}>
-                            <a href="javascript:;" className={styles.body_part_link} onClick={() => handlepageRedirect('Male-Legs')} >
+                            <a href="javascript:;" className={styles.body_part_link} onClick={() => handlepageRedirect('Male-Legs/knees')} >
                                 <h3 className={styles.heading}>Legs/knees .05</h3>
                                 <h5 className={styles.sub_heading}>read more <img src={process.env.REACT_APP_URL + '/' + process.env.REACT_APP_PLUGIN_MEDIA_PATH_URL + 'rightArrow.svg'} alt="" /></h5>
                             </a>
