@@ -101,6 +101,7 @@ const HtContactForm = ({ onNext }) => {
 
         try {
             const apiUrl = `${process.env.REACT_APP_URL}` + "/wp-json/bmh-hair-calculator/v1/email_data";
+
             const res = await fetch(apiUrl, requestOptions);
             const data = await res.json();
             console.log(data);
