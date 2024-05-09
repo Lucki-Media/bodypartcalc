@@ -507,6 +507,17 @@ align-items: center;
     background-color: #000;
     color:#fff;
   }
+
+  .process_checkout_btn .process_formBtn .check_btn_disabled{
+    opacity: 0.5;
+    pointer-events: none;
+    padding: 15px 30px;
+    width: 100%;
+    margin-bottom: 15px;
+    background-color: #000;
+    color:#fff;
+  }
+
   .process_checkout_btn button{
     width: 100% !important;
     padding: 15px 30px;

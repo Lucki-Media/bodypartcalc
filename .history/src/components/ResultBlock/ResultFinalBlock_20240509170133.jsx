@@ -1,8 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import styles from "../ResultBlock/Result_block.module.css";
-import Back from "../../image/arrow-back.svg";
-import Bar from "../../image/menu.svg";
-import Searcicon from "../../image/icons-search.svg";
 
 const ResultFinalBlock = ({ onPrev, selectedBodyPartCB }) => {
   const [isFilterPopupVisible, setIsFilterPopupVisible] = useState(false);
@@ -88,8 +85,6 @@ const ResultFinalBlock = ({ onPrev, selectedBodyPartCB }) => {
     const tagParam = tagFilters.filter(Boolean).join(',');
     const bodypartParam = bodypartFilters.filter(Boolean).join(',');
 
-
-
     fetch(`${process.env.REACT_APP_URL}/wp-json/bmh-get-product-list-api/v1/data?bodypart=${bodypartParam}&tag=${tagParam}&search=${searchQuery}`)
       .then((response) => response.json())
       .then((data) => {
@@ -121,38 +116,54 @@ const ResultFinalBlock = ({ onPrev, selectedBodyPartCB }) => {
       // If the item is not in the cart, add it with a quantity of 1
       setCartItems([...cartItems, { ...item, quantity: 1 }]);
     }
+  };
   
-    // Call the API to add the product to the WooCommerce cart
-    fetch(`${process.env.REACT_APP_URL}/wp-json/bmh/v1/add-to-cart`, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({
-        productId: item.id,
-        quantity: 1,
-        productName : item.id, // Assuming always adding one quantity
-      }),
-    })
-    .then(response => {
-      if (!response.ok) {
-        throw new Error('Failed to add product to cart');
-      }
-      // Handle successful response
-      console.log('Product added to cart successfully');
-    })
-    .catch(error => {
-      // Handle errors
-      console.error('Error adding product to cart:', error);
+  const handleCheckout = () => {
+
+    // Call the API to add the products to the WooCommerce cart
+    cartItems.forEach(item => {     
+      fetch('/wp-json/wc/store/v1/cart/add-item', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          productId: item.id,
+          quantity: item.quantity,
+          productName: item.name,
+          productPrice: item.price,
+        }),
+
+        
+      })
+        .then(response => {
+          if (!response.ok) {
+            throw new Error('Failed to add product to cart');
+          }
+          // Handle successful response
+          console.log('Product added to cart successfully');
+        })
+        .catch(error => {
+          // Handle errors
+          console.error('Error adding product to cart:', error);
+        });
     });
   };
   
-
   const removeFromCart = (itemId) => {
     // Filter out the item with the given itemId from the cart
     const updatedCartItems = cartItems.filter((item) => item.id !== itemId);
     setCartItems(updatedCartItems);
   };
+
+  const getTotalPrice = () => {
+    let totalPrice = 0;
+    cartItems.forEach(item => {
+      totalPrice += item.price * item.quantity;
+    });
+    return totalPrice;
+  };
+  
 
   return (
     <div>
@@ -164,7 +175,7 @@ const ResultFinalBlock = ({ onPrev, selectedBodyPartCB }) => {
             <div className="global_container">
               <div className={styles.filter_row}>
                 <div className={styles.back_btn} onClick={onPrev}>
-                  <span> <img src={Back} alt="" />
+                  <span> <img src={process.env.REACT_APP_URL + '/' + process.env.REACT_APP_PLUGIN_MEDIA_PATH_URL + 'arrow-back.svg'} alt="" />
                     Back</span>
                 </div>
 
@@ -172,11 +183,11 @@ const ResultFinalBlock = ({ onPrev, selectedBodyPartCB }) => {
                   <div className={styles.search_box}>
                     <input type="search" className={styles.search} placeholder="Search here" value={searchQuery} onChange={handleSearchInputChange} />
                     <span className={styles.icon}>
-                      <img src={Searcicon} alt="" />
+                      <img src={process.env.REACT_APP_URL + '/' + process.env.REACT_APP_PLUGIN_MEDIA_PATH_URL + 'icons-search.svg'} alt="" />
                     </span>
                   </div>
                   <div className={styles.filter_final_row}>
-                    <div className={`filter_pop_icon ${styles.filter_icon}`} onClick={handleFilterIconClick} > <img src={Bar}></img><span>Filter</span></div>
+                    <div className={`filter_pop_icon ${styles.filter_icon}`} onClick={handleFilterIconClick} > <img src={process.env.REACT_APP_URL + '/' + process.env.REACT_APP_PLUGIN_MEDIA_PATH_URL + 'menu.svg'}></img><span>Filter</span></div>
                     {isFilterPopupVisible && (
                       <div className={`filter_popup_col ${styles.filter_popup}`}>
                         <div className={styles.close_btn} onClick={handleCloseButtonClick}>X</div>
@@ -217,7 +228,7 @@ const ResultFinalBlock = ({ onPrev, selectedBodyPartCB }) => {
                         </div>
 
                         <div className={styles.filter_apply_btn}>
-                          <button className={`bb_button ${styles.bb_btns}`}  onClick={handleAppliedFilter} >
+                          <button className={`bb_button ${styles.bb_btns}`} onClick={handleAppliedFilter} >
                             Apply Filter
                           </button>
                         </div>
@@ -268,17 +279,40 @@ const ResultFinalBlock = ({ onPrev, selectedBodyPartCB }) => {
                     <div className={styles.result_heading}>
                       Your Cart
                     </div>
-                    <div className={styles.cart_product_listing}>
-                      {cartItems.map((item, index) => (
-                        <div key={index}>
-                          <div>{item.name}</div>
-                          <div>{item.price}</div>
-                          <div onClick={() => removeFromCart(item.id)}>Remove</div>
+                    {cartItems.length === 0 ? (
+                       <div className={styles.cart_row}>
+                      <div className={styles.cart_P_name}>
+                        Cart is empty
+                      </div>
+                      </div>
+                    ) : (
+                      <div className={styles.cart_product_listing}>
+                        {cartItems.map((item, index) => (
+                          <div className={styles.cart_row} key={index}>
+                            <div className={styles.cart_product_add_remove}>
+                              <div className={styles.remove_circle} onClick={() => removeFromCart(item.id)}>x</div>
+                              <div className={styles.cart_P_name}>{item.name}</div>
+                            </div>
+                            <div className={styles.cart_price}>${item.price}</div>
+                          </div>
+                        ))}
+                        <div className={styles.cart_total_row}>
+                          <div className={styles.cart_product_add_remove}>
+                            <div className={styles.cart_P_name}>Total</div>
+                          </div>
+                          <div className={styles.cart_price}>${getTotalPrice()}</div>
                         </div>
-                      ))}
-                    </div>
+                      </div>
+                      )}
                   </div>
-                </div>
+                
+                  <div className={styles.process_checkout_btn}>
+                    <div className={styles.process_formBtn}>
+                    <button type="submit"  className={`bb_button ${cartItems.length === 0 ? styles.check_btn_disabled : styles.check_btn }`} onClick={() => handleCheckout()} >Proceed To checkout</button>
+                    </div>
+                    <button className="bb_button"> Contact Us</button>
+                    </div>
+                  </div>              
               </div>
             </div>
           </div>
