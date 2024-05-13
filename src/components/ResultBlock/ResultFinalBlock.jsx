@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import styles from "../ResultBlock/Result_block.module.css";
 //import apiFetch from '@wordpress/api-fetch';
 //import { createNonceMiddleware } from '@wordpress/api-fetch';
+import axios from 'axios';
 
 
 
@@ -19,6 +20,8 @@ const ResultFinalBlock = ({ onPrev, selectedBodyPartCB }) => {
   const [error, setError] = useState('');
   const [success, setSuccess] = useState(false);
   //wp.apiFetch.nonceMiddleware = createNonceMiddleware("57096a48a5");
+  //const productCartData = []; // Assuming this is your existing array of cart items
+  const productCartData = [];
 
   useEffect(() => {
     const [tag, bodypart] = selectedBodyPartCB.split('-');
@@ -127,53 +130,44 @@ const ResultFinalBlock = ({ onPrev, selectedBodyPartCB }) => {
   
   
   const handleCheckout = () => {
-
     // Call the API to add the products to the WooCommerce cart
-    cartItems.forEach(item => {     
-    //   fetch('/build-my-hair/wp-admin/admin-ajax.php', {
-    //     method: 'POST',
-    //     headers: {
-    //         'Content-Type': 'application/json',
-    //         'X-WP-Nonce': "gasjfgsdjf",
-    //     },
-    //     body: JSON.stringify({
-    //         action: 'add_product_to_cart', // AJAX action name
-    //         product_id: item.id, // Replace with actual product ID
-    //     }),
-    // })
-    // .then(response => {
-    //     if (!response.ok) {
-    //         throw new Error('Network response was not ok');
-    //     }
-    //     return response.json();
-    // })
-    // .then(data => {
-    //     console.log(data);
-    // })
-    // .catch(error => {
-    //     console.error('There was a problem with the fetch operation:', error);
-    // });
-
-    // wp.apiFetch({
-    //     path: '/build-my-hair/wp-admin/admin-ajax.php',
-    //     method: 'POST',
-    //     data: { action: 'add_product_to_cart', product_id: item.id, quantity: 1 }
-    // }).then((response) => {
-      
-    //     if (response.success) {
-    //         setSuccess(true);
-    //         setError('');
-    //         console.log('Product added:', response.data.cart);
-    //     } else {
-    //         setSuccess(false);
-    //         setError(response.data.message);
-    //     }
-    // }).catch((error) => {
-        
-    //     setError('Error adding product: ' + error.message);
-    // });
+    setLoading(true);
+    cartItems.forEach((item, index) => {
+      const productId  = item.id;
+      const quantity  = 1;
+      productCartData.push({ productId, quantity });
     });
+    newaddToCart(0);
   };
+
+
+  function newaddToCart(index) {
+    if (index < productCartData.length) {
+      const { productId, quantity } = productCartData[index];
+      const url = `${process.env.REACT_APP_URL}/?add-to-cart=${productId}&quantity=${quantity}`;
+      
+      // Create a temporary iframe to load the URL
+      const iframe = document.createElement('iframe');
+      iframe.style.display = 'none';
+      document.body.appendChild(iframe);
+      iframe.src = url;
+  
+      // Wait for the iframe to load, then remove it and proceed to the next product
+      iframe.onload = () => {
+        document.body.removeChild(iframe);
+        newaddToCart(index + 1);
+      };
+    } else {
+      // Redirect to the cart page after all products are added
+      setTimeout(() => {
+        window.location.href = `${process.env.REACT_APP_URL}/cart/`;
+       // setLoading(false);
+      }, 1000); // Adjust the delay as needed
+    }
+  }
+  
+  // Start adding products from index 0
+  
   
   const removeFromCart = (itemId) => {
     // Filter out the item with the given itemId from the cart
