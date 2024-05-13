@@ -66,7 +66,7 @@ const HorizontalTab = ({onNext , onTabSelect , bodypartcallback }) => {
         {selectedTabIndex === 0 && (
       <div className="bb_navigation_page_button">
         <div className="bb_redirect_next_btn">
-          <button className={`bb_button ${checkCookie.hairZone.length === 0 ? 'styles.check_btn_disabled' : '' }`} onClick={onNext}>
+          <button className={`bb_button `} onClick={onNext}>
             Next 
           </button>
         </div>

@@ -168,7 +168,6 @@ const ResultFinalBlock = ({ onPrev, selectedBodyPartCB }) => {
   
   // Start adding products from index 0
   
-  
   const removeFromCart = (itemId) => {
     // Filter out the item with the given itemId from the cart
     const updatedCartItems = cartItems.filter((item) => item.id !== itemId);

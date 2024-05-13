@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useCookies } from 'react-cookie';
 import styles from "../ResultBlock/Result_block.module.css"
+import axios from 'axios';
 
 const ResultBlock = ({onNext}) => {
 
@@ -119,6 +120,58 @@ const ResultBlock = ({onNext}) => {
       
   }, [hairZonesFromCookie, skinToneFromCookie, hairTypeFromCookie, hairColorFromCookie]);
 
+  
+  const handleHairCheckout = async () => {
+    // Call the API to add the products to the WooCommerce cart
+  
+    const url = `${process.env.REACT_APP_URL}/wp-json/wc/v3/products`;
+    const consumerKey = 'ck_d855785985899f76845dda1b1f6beb579794a568';
+    const consumerSecret = 'cs_cba22b8f4628eec94fe13659c652a66f93a3c42c';
+  
+    const totalPrice = finalEstimatedCost; // Assuming finalEstimatedCost is the total price
+    const depositAmount = totalPrice * 0.1; // 10% of the total price
+    const discount = totalPrice * 0.1; // Calculating the discount
+  
+    const data = {
+      name: `${"Stage" + norwoodStageValue + "-" + skinToneFromCookie + "/" + hairTypeFromCookie + "/" + hairColorFromCookie }`,
+      type: 'simple',
+      regular_price: `${depositAmount}`, // Set the deposit amount as the regular price
+      description: `${"Stage" + norwoodStageValue + "-" + skinToneFromCookie + "/" + hairTypeFromCookie + "/" + hairColorFromCookie }`,
+      short_description: `You're getting a 10% discount! You're paying ${depositAmount}. Total price: ${totalPrice}.`, // Short description with discount information
+    };
+  
+    try {
+      const response = await axios.post(url, data, {
+        auth: {
+          username: consumerKey,
+          password: consumerSecret,
+        },
+      });
+  
+      if (response.data) {
+        const url =  `${process.env.REACT_APP_URL}/?add-to-cart=${response.data.id}&quantity=1`;
+  
+        // Create a temporary iframe to load the URL
+        const iframe = document.createElement('iframe');
+        iframe.style.display = 'none';
+        document.body.appendChild(iframe);
+        iframe.src = url;
+  
+        // Wait for the iframe to load, then remove it and proceed to the next product
+        iframe.onload = () => {
+          document.body.removeChild(iframe);
+          window.location.href = `${process.env.REACT_APP_URL}/cart/`;
+        };
+      }
+  
+      return response.data;
+  
+    } catch (error) {
+      console.error('Error creating product:', error);
+      return null;
+    }
+  };
+  
     const calculatePricePerGraft = (totalCost) => {
       let pricePerGraft;
       if (totalCost < 1000) {
@@ -133,6 +186,8 @@ const ResultBlock = ({onNext}) => {
 
     // Calculate final estimated cost based on price per graft
     const finalEstimatedCost = resultData ? resultData * calculatePricePerGraft(resultData) : null;
+    console.log(typeof finalEstimatedCost);
+    
   
   return (
     <div>
@@ -159,7 +214,7 @@ const ResultBlock = ({onNext}) => {
             <p>I am ready to place a deposit and schedule my Hair Restoration.</p>
           </div>
           <div className={styles.resultblock_button}>
-            <button className="bb_black_button" onClick={onNext}>I'm ready to restore my confidence</button>
+            <button className="bb_black_button" onClick={() => handleHairCheckout()}>I'm ready to restore my confidence</button>
           </div>
         </div>
       </div>
