@@ -10,8 +10,8 @@ import BodyZones from "../BodyZones/BodyZones";
 
 const HorizontalTab = ({onNext , onTabSelect , bodypartcallback }) => {
   const [selectedTabIndex, setSelectedTabIndex] = useState(0);
-  const [cookies, setCookie] = useCookies(["hairZone"]);
-  const [checkCookie, setCheckCookie] = useCookies(cookies.hairZone);
+  // const [cookies, setCookie] = useCookies(["hairZone"]);
+  const [checkCookie, setCheckCookie] = useState([]);
 
 
 
@@ -27,12 +27,9 @@ const HorizontalTab = ({onNext , onTabSelect , bodypartcallback }) => {
    
   };
 
-
-
-  useEffect(() => {
-    
-  }, [checkCookie]);
-
+  const handleCookies = (cookie) => {
+    setCheckCookie(cookie);
+   };
 
   return (
     <>
@@ -53,7 +50,7 @@ const HorizontalTab = ({onNext , onTabSelect , bodypartcallback }) => {
 
               <TabPanel className={styles.tab_one}>
                 <div className={styles.hairMapping}>
-                  <HairMapping />
+                  <HairMapping cookieCallBack={handleCookies}/>
                 </div>
               </TabPanel>
               <TabPanel className={styles.tab_two}>
@@ -66,7 +63,7 @@ const HorizontalTab = ({onNext , onTabSelect , bodypartcallback }) => {
         {selectedTabIndex === 0 && (
       <div className="bb_navigation_page_button">
         <div className="bb_redirect_next_btn">
-          <button className={`bb_button `} onClick={onNext}>
+          <button className={`bb_button ${checkCookie && checkCookie.length === 0 ? styles.check_btn_disabled : '' }`} onClick={onNext}>
             Next 
           </button>
         </div>

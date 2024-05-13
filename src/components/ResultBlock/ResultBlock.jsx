@@ -122,6 +122,7 @@ const ResultBlock = ({onNext}) => {
 
   
   const handleHairCheckout = async () => {
+    setLoading(true);
     // Call the API to add the products to the WooCommerce cart
   
     const url = `${process.env.REACT_APP_URL}/wp-json/wc/v3/products`;
@@ -160,7 +161,12 @@ const ResultBlock = ({onNext}) => {
         // Wait for the iframe to load, then remove it and proceed to the next product
         iframe.onload = () => {
           document.body.removeChild(iframe);
-          window.location.href = `${process.env.REACT_APP_URL}/cart/`;
+          setLoading(false);
+       //  setTimeout(() => {
+            window.location.href = `${process.env.REACT_APP_URL}/cart/`;
+            
+         // }, 1000);
+          
         };
       }
   

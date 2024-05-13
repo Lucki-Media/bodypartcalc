@@ -5,7 +5,7 @@ import styles from './HairMap.module.css';
 // import { RadioGroup, RadioButton } from 'react-radio-buttons';
 
 
-const HairMapping = () => {
+const HairMapping = (props) => {
     const [selectedArea, setSelectedArea] = useState(false);
     const [selectedpopupArea, setselectedpopupArea] = useState('');
     const [activeFirst, setactiveFirst] = useState('');
@@ -125,24 +125,23 @@ const HairMapping = () => {
         }
     };
 
-
     const handlePopupClose = () => {
         setSelectedArea(false);
         if (selectedpopupArea && selectedRadioValue) {
-            var arr = [...hairSeverity]; //copy array by value
-            let myObject = { Hair_Zone: selectedpopupArea, Severity: selectedRadioValue };
-            arr.push(myObject)
-            sethairSeverity(arr)
+            const updatedHairSeverity = [...hairSeverity]; // Copy the current state
+            const myObject = { Hair_Zone: selectedpopupArea, Severity: selectedRadioValue };
+            updatedHairSeverity.push(myObject); // Add the new object
+            sethairSeverity(updatedHairSeverity); // Update the state
+            props.cookieCallBack(updatedHairSeverity); // Pass the updated state to the callback function
         }
     };
+    
 
     useEffect(() => {
         // Effect code here...
     }, [activeFirst, activesecond, activeThird, activeFour, activeFive, activeSix, activeSeven]);
 
 
-    // console.log('REACT_APP_URL', process.env.REACT_APP_URL);
-    // console.log('REACT_APP_PLUGIN_MEDIA_PATH_URL', process.env.REACT_APP_PLUGIN_MEDIA_PATH_URL);
 
     const renderPopup = () => {
         if (selectedArea) {
