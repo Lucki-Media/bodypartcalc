@@ -181,6 +181,12 @@ const ResultFinalBlock = ({ onPrev, selectedBodyPartCB }) => {
     });
     return totalPrice;
   };
+
+
+  const removeHtmlTags = (html) => {
+    const doc = new DOMParser().parseFromString(html, 'text/html');
+    return doc.body.textContent || "";
+  };
   
 
   return (
@@ -270,7 +276,8 @@ const ResultFinalBlock = ({ onPrev, selectedBodyPartCB }) => {
                             {item.name}
                           </h4>
 
-                          <p>{item.description}</p>
+                          <p>{removeHtmlTags(item.description)}</p> {/* Render cleaned description */}
+
 
                           <a href={item.permalink} target='__blank' >Read More</a>
                         </div>

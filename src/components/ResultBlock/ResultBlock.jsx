@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useCookies } from 'react-cookie';
 import styles from "../ResultBlock/Result_block.module.css"
+import { ToastContainer, toast } from 'react-toastify';
 import axios from 'axios';
 
 const ResultBlock = ({onNext}) => {
@@ -10,6 +11,8 @@ const ResultBlock = ({onNext}) => {
   const [loading, setLoading] = useState(true);
   const [resultData, setResultData] = useState(null);
   const [norwoodStageValue, setNorwoodStageValue] = useState(null);
+  const [getEmail, setEmail] = useCookies(['UserEmail']);
+
 
   // Get values from cookies
   const [gethairZonecookies] = useCookies(["hairZone"]);
@@ -162,11 +165,7 @@ const ResultBlock = ({onNext}) => {
         iframe.onload = () => {
           document.body.removeChild(iframe);
           setLoading(false);
-       //  setTimeout(() => {
-            window.location.href = `${process.env.REACT_APP_URL}/cart/`;
-            
-         // }, 1000);
-          
+            window.location.href = `${process.env.REACT_APP_URL}/cart/`;        
         };
       }
   
@@ -194,7 +193,41 @@ const ResultBlock = ({onNext}) => {
     const finalEstimatedCost = resultData ? resultData * calculatePricePerGraft(resultData) : null;
     console.log(typeof finalEstimatedCost);
     
-  
+   
+
+    const handleContactMe = async () => {
+      const emailData = {
+        to: getEmail.UserEmail, // Change this to your recipient email address
+        subject: 'Hair Restoration Inquiry',
+        body: `
+          According to our calculations, you are Stage ${norwoodStageValue} on the Norwood Scale, 
+          and your Hair Restoration Procedure will need around ${resultData} number of grafts to completely restore your hair.
+    
+          The total cost of a FUE NeoGraft restoration of this level of hair loss is estimated to be $${finalEstimatedCost}.
+    
+          Our hair restoration procedures are cutting-edge, and this price includes biological booster injections during the procedure and all follow-up appointments for one year.
+    
+          Please note that the output provided by this online estimator is intended for informational purposes only and should not be considered a firm quote or offer. While we have designed this tool to be as accurate as possible, drawing on extensive research and the expertise of qualified physicians, the complexity and uniqueness of individual circumstances mean that a definitive estimate can only be provided following an in-person consultation. We encourage you to use this tool as a preliminary guide and look forward to further assisting you with a detailed consultation.
+    
+          *Final cost will be calculated, and the deposit will be adjusted at your in-patient consultation.
+        `
+      };
+    
+      try {
+        const response = await axios.post(`${process.env.REACT_APP_URL}/wp-json/bmh-hair-calculator/v1/send-email`, emailData); // Assuming you have a server endpoint to handle email sending
+        console.log(response.data); // Log the response from the server
+        toast.success("Email sent successfully", {
+          position: "top-center"
+        });
+      } catch (error) {
+        console.error('Error sending email:', error);
+        toast.error("Failed to send email", {
+          position: "top-center"
+        });
+      }
+    };
+
+    
   return (
     <div>
       {loading ? (
@@ -202,10 +235,11 @@ const ResultBlock = ({onNext}) => {
       ) : (
     <>
       <div className={styles.result_module}>
+      <ToastContainer />
         <div className="global_small_container">
           <div className={styles.result_content_block}>
 
-            <p>According to our calculations, you are Stage {norwoodStageValue} on the Norwood Scale, and your Hair Restoration Procedure will need around {resultData} number of grafts to completely restore your hair.</p>
+            <p>According to our calculations, you are <span><strong> Stage {norwoodStageValue}</strong> </span>on the Norwood Scale, and your Hair Restoration Procedure will need around {resultData} number of grafts to completely restore your hair.</p>
 
             <p>The total cost of a FUE NeoGraft restoration of this level of hair loss is estimated to be  <span><strong> $ {finalEstimatedCost}</strong></span>. </p>
 
@@ -228,7 +262,7 @@ const ResultBlock = ({onNext}) => {
         <div className="global_small_container">
           <h4>I would like to schedule a free consultation or have a staff member contact me for more information.</h4>
           <div className={styles.resultblock_button}>
-            <button className="bb_black_button">Please, contact me</button>
+          <button className="bb_black_button" onClick={handleContactMe}>Please, contact me</button>
           </div>
         </div>
       </div>

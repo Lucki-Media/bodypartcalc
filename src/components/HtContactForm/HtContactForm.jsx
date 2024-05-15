@@ -7,6 +7,8 @@ import 'react-toastify/dist/ReactToastify.css';
 const HtContactForm = ({ onNext }) => {
     const [loading, setLoading] = useState(false);
     const [success, setSuccess] = useState(false);
+    const [getEmail, setEmail] = useCookies(['UserEmail']);
+
 
     useEffect(() => {
         if (success) {
@@ -82,8 +84,17 @@ const HtContactForm = ({ onNext }) => {
         // Validate Email
         if (!validateEmail(formData.email)) {
             setEmailError('Please enter a valid email address');
+            
             return;
         }
+
+        //Set user email id on cookies
+        setEmail("UserEmail", formData.email, {
+            path: "/",
+            maxAge: 604800,
+          });
+
+        
 
         // Show Loader
         setTimeout(() => {
@@ -105,15 +116,19 @@ const HtContactForm = ({ onNext }) => {
             const res = await fetch(apiUrl, requestOptions);
             const data = await res.json();
           
-            toast.success("Email sent successfully");
+            toast.success("Email sent successfully", {
+                position: "top-center"
+              });
+              
             // Show success message
-
             setSuccess(true);
 
 
         } catch (error) {
             console.log(error);
-            toast.error("Failed to send email");
+            toast.error("Failed to send email", {
+                position: "top-center"
+              });
             setLoading(false);
         }
     };
