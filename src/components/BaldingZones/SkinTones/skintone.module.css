@@ -1,6 +1,7 @@
 .skin_tones_section {
   display: flex;
- align-items: center;
+ align-items: start;
+ justify-content: start;
 }
 
 .left_zone {
@@ -32,6 +33,7 @@
   /* width: 18px;
   height: 18px; */
   cursor: pointer;
+  margin-right: 6px;
 }
 
 .title_group label {

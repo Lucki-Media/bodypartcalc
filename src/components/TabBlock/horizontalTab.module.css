@@ -2,14 +2,16 @@
     display: flex;
     list-style: none;
     padding: 0;
-    align-items: center;
+    align-items: start;
     justify-content: center;
+    margin-top: 0;
     /* margin-bottom: 30px; */
 }
 
 .zones_block{
     display: flex;
     align-items: center;
+    justify-content: start;
     /* justify-content: space-between; */
     padding: 0 0;
 }

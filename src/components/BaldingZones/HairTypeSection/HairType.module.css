@@ -1,6 +1,6 @@
 .hair_type_section {
   display: flex;
-  align-items: center;
+  align-items: start;
 }
 .left_zone {
   width: 50%;
@@ -35,6 +35,7 @@
   /* width: 18px;
   height: 18px; */
   cursor: pointer;
+  margin-right: 6px;
 }
 .title_group {
   display: flex;

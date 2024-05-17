@@ -15,6 +15,7 @@ const HairMapping = (props) => {
     const [activeFive, setactiveFive] = useState('');
     const [activeSix, setactiveSix] = useState('');
     const [activeSeven, setactiveSeven] = useState('');
+    const [activeeight, setactiveeight] = useState('');
     const [cookies, setCookie] = useCookies(["hairZone"]);
     const [selectedRadioValue, setSelectedRadioValue] = useState('Minimal');
     const [hairSeverity, sethairSeverity] = useState([]);
@@ -96,6 +97,13 @@ const HairMapping = (props) => {
                 setSelectedArea(true);
             }, "500");
         }
+        // area 8
+        else if (area.name === '8' && area.preFillColor === '') {
+            setactiveeight("#77c4ffb5");
+            setTimeout(() => {
+                setSelectedArea(true);
+            }, "500");
+        }
         else if (area.name === '1' && area.preFillColor !== '') {
             setactiveFirst("");
         }
@@ -123,6 +131,9 @@ const HairMapping = (props) => {
         else if (area.name === '7' && area.preFillColor !== '') {
             setactiveSeven("");
         }
+        else if (area.name === '8' && area.preFillColor !== '') {
+            setactiveeight("");
+        }
     };
 
     const handlePopupClose = () => {
@@ -139,7 +150,7 @@ const HairMapping = (props) => {
 
     useEffect(() => {
         // Effect code here...
-    }, [activeFirst, activesecond, activeThird, activeFour, activeFive, activeSix, activeSeven]);
+    }, [activeFirst, activesecond, activeThird, activeFour, activeFive, activeSix, activeSeven , activeeight ]);
 
 
 
@@ -216,6 +227,8 @@ const HairMapping = (props) => {
             { name: "5", shape: "poly", preFillColor: activeFive, coords: [190, 49, 197, 54, 204, 58, 210, 60, 216, 63, 224, 67, 230, 70, 237, 73, 242, 75, 249, 78, 258, 79, 269, 80, 266, 73, 257, 64, 250, 60, 235, 53, 225, 49, 211, 46, 201, 46], fillColor: "#ffffff8c", strokeColor: "#ffffff8c" },
             { name: "6", shape: "poly", preFillColor: activeSix, coords: [190, 49, 202, 56, 214, 62, 223, 67, 231, 70, 239, 74, 251, 77, 261, 78, 270, 79, 277, 85, 281, 89, 284, 94, 288, 100, 292, 106, 277, 101, 267, 99, 255, 96, 243, 92, 232, 89, 222, 84, 211, 76, 201, 66], fillColor: "#ffffff8c", strokeColor: "#ffffff8c" },
             { name: "7", shape: "poly", preFillColor: activeSeven, coords: [302, 156, 288, 158, 277, 161, 261, 161, 247, 157, 240, 155, 229, 150, 222, 143, 216, 137, 206, 131, 198, 127, 191, 124, 180, 122, 168, 121, 159, 124, 148, 127, 153, 120, 161, 116, 167, 109, 179, 106, 186, 103, 199, 100, 206, 98, 214, 97, 225, 98, 236, 97, 247, 97, 258, 99, 270, 102, 281, 104, 287, 106, 294, 109, 299, 119, 302, 132, 301, 142, 302, 149], fillColor: "#ffffff8c", strokeColor: "#ffffff8c" },
+            { name: "8", shape: "poly", preFillColor: activeeight, coords: [223,205,217,218,208,227,198,235,226,256,258,275,261,260,267,249,273,236,279,224,283,215,287,206,291,198,295,187,298,177,301,167,302,157,292,161,279,162,266,163,255,161,242,157,228,151,220,145,210,137,202,131,192,126,181,123,167,124,155,125,142,131,135,136,130,143,136,153,143,162,149,173,152,186,152,200,164,201,175,202,180,185,187,174,195,169,203,167,214,168,222,174,225,183,224,193], fillColor: "#ffffff8c", strokeColor: "#ffffff8c" },
+
         ]
     };
     const MAP2 = {
@@ -229,6 +242,9 @@ const HairMapping = (props) => {
             { name: "5", preFillColor: activeFive, shape: "poly", coords: [155, 151, 164, 154, 173, 156, 184, 154, 191, 151, 196, 146, 200, 142, 202, 132, 198, 124, 191, 118, 183, 112, 170, 112, 159, 115, 154, 120, 150, 127, 147, 132, 145, 138, 149, 145], fillColor: "#ffffff8c", strokeColor: "#ffffff8c" },
             { name: "6", preFillColor: activeSix, shape: "poly", coords: [151, 149, 146, 133, 150, 126, 155, 119, 163, 116, 169, 113, 179, 113, 187, 117, 196, 123, 200, 131, 199, 141, 194, 149, 202, 149, 208, 143, 220, 131, 224, 122, 221, 104, 214, 95, 205, 87, 191, 81, 180, 78, 166, 79, 153, 83, 141, 89, 131, 99, 124, 111, 124, 124, 130, 134, 137, 143, 142, 146], fillColor: "#ffffff8c", strokeColor: "#ffffff8c" },
             { name: "7", preFillColor: activeSeven, shape: "poly", coords: [79, 233, 88, 220, 94, 209, 102, 193, 108, 182, 114, 167, 117, 154, 120, 138, 122, 124, 124, 113, 129, 100, 139, 90, 151, 83, 163, 80, 180, 79, 187, 80, 194, 82, 203, 86, 214, 95, 222, 109, 224, 124, 226, 135, 229, 146, 230, 156, 234, 165, 237, 175, 241, 185, 247, 198, 251, 208, 259, 217, 264, 223, 267, 228, 265, 215, 260, 200, 258, 187, 255, 174, 254, 159, 253, 144, 252, 130, 253, 119, 256, 104, 255, 91, 249, 77, 238, 66, 226, 61, 213, 55, 198, 52, 184, 52, 169, 51, 155, 51, 145, 52, 132, 57, 122, 61, 113, 67, 104, 74, 96, 80, 94, 92, 92, 104, 96, 115, 95, 124, 96, 137, 95, 148, 94, 159, 93, 168, 88, 193, 90, 184, 84, 208], fillColor: "#ffffff8c", strokeColor: "#ffffff8c" },
+            { name: "8", preFillColor: activeeight, shape: "poly", coords: [66,230,61,216,60,198,57,179,56,161,56,149,56,139,59,127,63,115,67,105,74,95,83,85,96,75,109,69,93,87,90,97,91,111,93,124,94,137,94,149,91,163,89,175,87,185,86,195,84,206,81,217,79,227,71,243], fillColor: "#ffffff8c", strokeColor: "#ffffff8c" },
+            { name: "8", preFillColor: activeeight, shape: "poly", coords: [240,67,245,78,253,87,255,99,254,114,254,129,254,144,254,158,256,168,256,178,258,189,263,204,264,212,269,223,270,233,274,243,280,230,284,216,287,199,289,178,291,152,287,125,281,110,270,91,255,75,248,71], fillColor: "#ffffff8c", strokeColor: "#ffffff8c" },
+
         ]
     };
 
