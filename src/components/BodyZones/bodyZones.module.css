@@ -60,21 +60,23 @@
 }
 
 .body_part_link .heading {
-  font-family: "quiche_sansmedium";
+  font-family: 'oregon_ldo_lightoblique';
   font-weight: normal;
   font-style: normal;
   font-size: 23px;
   color: #1c1c1c;
+  font-weight: 600;
   margin: 0;
 }
 
 .sub_heading {
-  font-family: "quiche_sansmedium";
+  font-family: 'oregon_ldo_lightoblique';
   font-weight: normal;
   font-style: normal;
   font-size: 13px;
   color: #707070;
   margin: 10px 0;
+  font-weight: 600;
   opacity: 0;
 }
 

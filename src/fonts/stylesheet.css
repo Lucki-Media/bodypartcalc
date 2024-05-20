@@ -262,3 +262,43 @@
     font-style: normal;
 
 }
+
+@font-face {
+    font-family: 'marcellusregular';
+    src: url('marcellus-regular.woff2') format('woff2'),
+         url('marcellus-regular.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+
+@font-face {
+    font-family: 'oregon_ldo_condensedregular';
+    src: url('oregon_ldo_condensed.woff2') format('woff2'),
+         url('oregon_ldo_condensed.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+
+
+
+@font-face {
+    font-family: 'oregon_ldo_lightoblique';
+    src: url('oregon_ldo_light_oblique.woff2') format('woff2'),
+         url('oregon_ldo_light_oblique.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+@font-face {
+    font-family: 'oregon_ldo_lightoblique';
+    src: url('oregon_ldo_light.woff2') format('woff2'),
+         url('oregon_ldo_light.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+
+}

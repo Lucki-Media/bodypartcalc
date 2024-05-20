@@ -7,8 +7,9 @@
     font-size: 16px;
     line-height: 25px;
     color: #1C1C1C;
-    font-family: 'quiche_sansmedium';
+    font-family: 'poppinsmedium';
     margin: 0 0 20px 0;
+
 }
 
 .result_content_block p:last-child {
@@ -102,6 +103,7 @@
     font-size: 15px;
     color: #222;
     line-height: 20px;
+    font-family: 'poppinslight';
 }
 
 .product_box a {
@@ -202,7 +204,8 @@
         display: block;
         font-size: 18px;
         line-height: normal;
-        font-family: 'quiche_sansmedium';
+        font-family: 'oregon_ldo_lightoblique';
+        font-weight: 600;
     }
 }
 
@@ -344,7 +347,8 @@ margin: 10px 0;
     padding-bottom: 20px;
     span{
         color: #fff;
-        font-family: 'quiche_sansmedium';
+        font-family: 'poppinsmedium';
+        font-weight: 600;
     }
     .switch{
         margin: 0 15px;
@@ -357,6 +361,8 @@ font-family: 'poppinsmedium';
 }
 .category_section label{
     display: block;
+    font-family: 'poppinsmedium';
+    margin-bottom: 10px;
 }
 .category_row{
 display: flex;
